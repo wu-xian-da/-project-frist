@@ -45,7 +45,7 @@
 	
 	<select id="findAll" resultMap="userMap">
 		SELECT <include refid="userColumns"></include>
-		FROM sys_users a RIGHT JOIN sys_roles r ON r.user_id = a.id 
+		FROM sys_users a 
 		ORDER BY a.id DESC
 	</select>
 	
