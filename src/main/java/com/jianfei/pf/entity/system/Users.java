@@ -11,6 +11,7 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
+import com.jianfei.pf.base.annotation.FormQuery;
 import com.jianfei.pf.base.entity.BaseEntity;
 import com.jianfei.pf.entity.common.Gender;
 
@@ -30,6 +31,7 @@ public class Users extends BaseEntity{
 	
 	private String password;//密码
 	
+	@FormQuery
 	private String nickname;//昵称
 	
 	private Gender gender;//性别
@@ -41,5 +43,7 @@ public class Users extends BaseEntity{
 	private Date loginTime;//最近登录时间
 	
 	private String ip;//登录IP
+	
+	private String roles;
 
 }

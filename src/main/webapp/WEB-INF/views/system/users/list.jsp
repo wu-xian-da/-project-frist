@@ -24,6 +24,7 @@
 			<td>用户名</td>
 			<td>密码</td>
 			<td>昵称</td>
+			<td>归属角色</td>
 			<td>性别</td>
 			<td>年龄</td>
 			<td>注册时间</td>
@@ -37,7 +38,8 @@
 			<td>${users.username}</td>
 			<td>${users.password}</td>
 			<td>${users.nickname}</td>
-			<!--'man' eq users.gender ? "男" : "女"-->
+			<td>${users.rolename}</td>
+			<!--'man' eq users.gender ? "男" : "女" users.roles.rolename-->
 			<td>${users.gender.name}</td>
 			<td>${users.age}</td>
 			<td><fmt:formatDate value="${users.createTime}" pattern="yyyy-MM-dd HH:mm" type="date" /></td>

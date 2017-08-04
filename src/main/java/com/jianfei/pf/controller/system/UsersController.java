@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.jianfei.pf.entity.common.Gender;
 import com.jianfei.pf.entity.system.Users;
+import com.jianfei.pf.service.system.RolesService;
 import com.jianfei.pf.service.system.UsersService;
 
 @Controller
@@ -25,9 +26,13 @@ public class UsersController {
 	
 	@Autowired
 	private UsersService usersService;
+	
+	@Autowired
+	private RolesService rolesService;
 
 	private void setModel (Model model) {
 		model.addAttribute("gender",Gender.values());
+		model.addAttribute("roles",rolesService.findAll());
 	}
 	
 	@RequestMapping(value="/insert",method=RequestMethod.GET)
@@ -84,6 +89,7 @@ public class UsersController {
 	@RequestMapping
 	public String list(Model model,Users users){
 		model.addAttribute("users",this.usersService.findAll());
+		this.setModel(model);
 		return "system/users/list";
 	}
 }
