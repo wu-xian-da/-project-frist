@@ -1,0 +1,56 @@
+/**
+  *project project-frist
+  *@author changchun.wu
+  *2017年8月1日下午2:31:15
+  */
+package com.jianfei.pf.controller;
+
+import java.util.Date;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.jianfei.pf.entity.system.Users;
+import com.jianfei.pf.service.system.UsersService;
+import com.jianfei.pf.utils.http.HttpUtils;
+
+@Controller
+@RequestMapping(value="/system")
+public class LoginController {
+	
+	@Autowired
+	private UsersService usersService;
+	
+	@RequestMapping
+	public String loginPage(){
+		return "system/login";
+	}
+	
+	@GetMapping("/login")
+	public String loginForm(Model model){
+		return "system/login";
+	}
+	
+	@PostMapping("/login")
+	public String loginUsers(Model model,Users users,HttpServletRequest request){
+		Users user = usersService.findUsersByNcikname(users.getNickname());
+		if (user != null) {
+			if (users.getNickname().equals(user.getNickname()) && users.getPassword().equals(user.getPassword())) {
+				user.setLoginTime(new Date());
+				user.setIp(HttpUtils.getRemoteAddr(request));
+				usersService.updateLoginTimeAndIp(user);
+				System.out.println("登录成功");
+			}
+		}else {
+			System.out.println("登录失败");
+			return "error/error";
+		}
+		return "redirect:/system/users";
+	}
+}
