@@ -14,8 +14,6 @@ import lombok.Setter;
 @Getter
 @Setter
 public class Roles extends BaseEntity{
-
-	//private Integer id;//id
 	
 	/**
 	 * 

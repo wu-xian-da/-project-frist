@@ -51,6 +51,6 @@ public class LoginController {
 			System.out.println("登录失败");
 			return "error/error";
 		}
-		return "redirect:/system/users";
+		return "system/main";
 	}
 }

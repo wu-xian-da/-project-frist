@@ -38,7 +38,7 @@
 			<td>${users.username}</td>
 			<td>${users.password}</td>
 			<td>${users.nickname}</td>
-			<td>${users.rolename}</td>
+			<td>${users.roleList}</td>
 			<!--'man' eq users.gender ? "男" : "女" users.roles.rolename-->
 			<td>${users.gender.name}</td>
 			<td>${users.age}</td>

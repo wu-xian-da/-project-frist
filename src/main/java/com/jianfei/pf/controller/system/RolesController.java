@@ -5,6 +5,9 @@
   */
 package com.jianfei.pf.controller.system;
 
+import org.springframework.stereotype.Controller;
+
+@Controller
 public class RolesController {
 	
 }

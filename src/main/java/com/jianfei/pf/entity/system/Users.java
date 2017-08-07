@@ -7,6 +7,8 @@ package com.jianfei.pf.entity.system;
 
 import java.util.Date;
 
+import org.apache.commons.lang3.StringUtils;
+
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -19,8 +21,6 @@ import com.jianfei.pf.entity.common.Gender;
 @Setter
 @ToString
 public class Users extends BaseEntity{
-	
-	//private Integer id;//id
 	
 	/**
 	 * 
@@ -45,5 +45,12 @@ public class Users extends BaseEntity{
 	private String ip;//登录IP
 	
 	private String roles;
+	
+	public String getRoleList(){
+	    if(this.roles == null || this.roles.isEmpty()){
+	        return null;
+	    }
+	    return StringUtils.join(this.roles);
+	}
 
 }
