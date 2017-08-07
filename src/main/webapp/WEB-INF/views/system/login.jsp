@@ -67,7 +67,7 @@ body {
   <tr>
     <td><table width="962" border="0" align="center" cellpadding="0" cellspacing="0">
       <tr>
-        <td height="235" background="<%=basePath%>resource/images/login_03.gif">&nbsp;</td>
+        <td height="235" background="<%=basePath%>static/resource/images/login_03.gif">&nbsp;</td>
       </tr>
       <tr>
         <td height="53"><table width="100%" border="0" cellspacing="0" cellpadding="0">

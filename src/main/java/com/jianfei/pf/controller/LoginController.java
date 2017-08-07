@@ -45,6 +45,7 @@ public class LoginController {
 				user.setLoginTime(new Date());
 				user.setIp(HttpUtils.getRemoteAddr(request));
 				usersService.updateLoginTimeAndIp(user);
+				model.addAttribute("users",user.getUsername());
 				System.out.println("登录成功");
 			}
 		}else {

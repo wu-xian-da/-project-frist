@@ -1,9 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 	<head>
 		<title>top</title>
-
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<meta http-equiv="pragma" content="no-cache">
 		<meta http-equiv="cache-control" content="no-cache">
 		<meta http-equiv="expires" content="0">
@@ -80,7 +79,7 @@ a {
 	<form name=clock>
 		<table width="100%" border="0" cellspacing="0" cellpadding="0">
 			<tr>
-				<td height="70" background="resource/images/main_05.gif">
+				<td height="70" background="http://localhost:8080/static/resource/images/main_05.gif">
 					<table width="100%" border="0" cellspacing="0" cellpadding="0">
 						<tr>
 							<td height="24">
@@ -110,7 +109,7 @@ a {
 								<table width="100%" border="0" cellspacing="0" cellpadding="0">
 									<tr>
 										<td width="270" height="38"
-											background="http://localhost:8080/static/resource/images/main_09.gif">
+											background="http://localhost:8080/static/resource/images/main_09.png">
 											&nbsp;
 										</td>
 										<td>
@@ -121,37 +120,17 @@ a {
 														<table width="100%" border="0" cellspacing="0"
 															cellpadding="0">
 															<tr>
-																<td width="50" height="19">
-																	<div align="center">
-																		<a
-																			href="servlet/WorkQueryServlet"
-																			target="mainFrame"><img
-																				src="resource/images/main_12.gif"
-																				width="49" height="19">
-																		</a>
-																	</div>
-																</td>
-																<td width="50">
-																	<div align="center">
-																		<a href="login.jsp" target="_parent"><img
-																				src="resource/images/main_20.gif"
-																				width="48" height="19">
-																		</a>
-																	</div>
-																</td>
 																<td width="26">
 																	<div align="center">
 																		<img src="http://localhost:8080/static/resource/images/main_21.gif"
 																			width="26" height="19">
 																	</div>
 																</td>
-																<td width="100">
+																<td width="50">
 																	<div align="center">
-																		<a
-																			href="servlet/UserUpdateServlet?id=<%=userInfo.getUserId()%>"
-																			target="mainFrame"><img
-																				src="http://localhost:8080/static/resource/images/main_22.gif"
-																				width="98" height="19">
+																		<a href="http://localhost:8080/system" target="_parent"><img
+																				src="http://localhost:8080/static/resource/images/main_20.gif"
+																				width="48" height="19">
 																		</a>
 																	</div>
 																</td>
@@ -164,7 +143,7 @@ a {
 													<td width="220" valign="bottom" nowrap="nowrap">
 														<div align="right">
 															<span class="STYLE1"><span class="STYLE2">■</span>
-																今天是：<input disabled="disabled" name=thetime
+															<input disabled="disabled" name=thetime
 																	style="font-size: 9pt; background-color: #333333; color: #FFFFFF; border: 0"
 																	size=25> </span>
 														</div>
@@ -222,7 +201,7 @@ a {
 										</td>
 										<td width="59%" valign="bottom">
 											<div align="center" class="STYLE1">
-												当前用户：</div>
+											</div>
 										</td>
 										<td width="21%">
 											&nbsp;
@@ -242,12 +221,9 @@ a {
 															cellpadding="0" cellspacing="0">
 															<tr>
 																<td height="20" style="cursor: hand"
-																	onMouseOver="this.style.backgroundImage='url(resource/images/bg.gif)';this.style.borderStyle='solid';this.style.borderWidth='1';borderColor='#a6d0e7'; "
+																	onMouseOver="this.style.backgroundImage='url(http://localhost:8080/static/resource/images/bg.gif)';this.style.borderStyle='solid';this.style.borderWidth='1';borderColor='#a6d0e7'; "
 																	onmouseout="this.style.backgroundImage='url()';this.style.borderStyle='none'">
-																	<div align="center" class="STYLE3">
-																		<a href="#"
-																			target="mainFrame">工作台</a>
-																	</div>
+																	
 																</td>
 															</tr>
 														</table>
@@ -255,27 +231,24 @@ a {
 												</tr>
 											</table>
 										</td>
-										<td width="3"    <%   if  (userInfo.getRolePower()  !=  3 &&  userInfo.getRolePower()  !=  4 ) {%> style=" display: none  "  <%}%>>
-											<img src="http://localhost:8080/static/resource/images/main_34.gif"
+										<td width="3">
+											<img src="http://localhost:8080/static/resource/images/main_36.gif"
 												width="3" height="28">
 										</td>
-										<td width="63"    <%   if  (userInfo.getRolePower()  !=  3 &&  userInfo.getRolePower()  !=  4 ) {%> style=" display: none  "  <%}%>>
+										<td width="63">
 											<table width="58" border="0" align="center" cellpadding="0"
 												cellspacing="0">
 												<tr      >
 													<td height="20" style="cursor: hand"
-														onMouseOver="this.style.backgroundImage='url(resource/images/bg.gif)';this.style.borderStyle='solid';this.style.borderWidth='1';borderColor='#a6d0e7'; "
+														onMouseOver="this.style.backgroundImage='url(http://localhost:8080/static/resource/images/bg.gif)';this.style.borderStyle='solid';this.style.borderWidth='1';borderColor='#a6d0e7'; "
 														onmouseout="this.style.backgroundImage='url()';this.style.borderStyle='none'">
-														<div align="center" class="STYLE3">
-															<a href="#"
-																target="mainFrame">报表</a>
-														</div>
+														
 													</td>
 												</tr>
 											</table>
 										</td>
 										<td width="3">
-											<img src="http://localhost:8080/static/resource/images/main_34.gif"
+											<img src="http://localhost:8080/static/resource/images/main_36.gif"
 												width="3" height="28">
 										</td>
 										<td width="63">
@@ -283,19 +256,15 @@ a {
 												cellspacing="0">
 												<tr>
 													<td height="20" style="cursor: hand"
-														onMouseOver="this.style.backgroundImage='url(resource/images/bg.gif)';this.style.borderStyle='solid';this.style.borderWidth='1';borderColor='#a6d0e7'; "
+														onMouseOver="this.style.backgroundImage='url(http://localhost:8080/static/resource/images/bg.gif)';this.style.borderStyle='solid';this.style.borderWidth='1';borderColor='#a6d0e7'; "
 														onmouseout="this.style.backgroundImage='url()';this.style.borderStyle='none'">
-														<div align="center" class="STYLE3">
-															<a
-																href="#"
-																target="mainFrame">客户信息</a>
-														</div>
+														
 													</td>
 												</tr>
 											</table>
 										</td>
 										<td width="3">
-											<img src="http://localhost:8080/static/resource/images/main_34.gif"
+											<img src="http://localhost:8080/static/resource/images/main_36.gif"
 												width="3" height="28">
 										</td>
 										<td width="63">
@@ -303,18 +272,15 @@ a {
 												cellspacing="0">
 												<tr>
 													<td height="20" style="cursor: hand"
-														onMouseOver="this.style.backgroundImage='url(resource/images/bg.gif)';this.style.borderStyle='solid';this.style.borderWidth='1';borderColor='#a6d0e7'; "
+														onMouseOver="this.style.backgroundImage='url(http://localhost:8080/static/resource/images/bg.gif)';this.style.borderStyle='solid';this.style.borderWidth='1';borderColor='#a6d0e7'; "
 														onmouseout="this.style.backgroundImage='url()';this.style.borderStyle='none'">
-														<div align="center" class="STYLE3">
-															<a href="#"
-																target="mainFrame">员工信息</a>
-														</div>
+														
 													</td>
 												</tr>
 											</table>
 										</td>
 										<td width="3">
-											<img src="http://localhost:8080/static/resource/images/main_34.gif"
+											<img src="http://localhost:8080/static/resource/images/main_36.gif"
 												width="3" height="28">
 										</td>
 										<td width="63">
@@ -322,18 +288,15 @@ a {
 												cellspacing="0">
 												<tr>
 													<td height="20" style="cursor: hand"
-														onMouseOver="this.style.backgroundImage='url(resource/images/bg.gif)';this.style.borderStyle='solid';this.style.borderWidth='1';borderColor='#a6d0e7'; "
+														onMouseOver="this.style.backgroundImage='url(http://localhost:8080/static/resource/images/bg.gif)';this.style.borderStyle='solid';this.style.borderWidth='1';borderColor='#a6d0e7'; "
 														onmouseout="this.style.backgroundImage='url()';this.style.borderStyle='none'">
-														<div align="center" class="STYLE3">
-															<a href="#"
-																target="mainFrame">公告信息</a>
-														</div>
+														
 													</td>
 												</tr>
 											</table>
 										</td>
 										<td width="3">
-											<img src="http://localhost:8080/static/resource/images/main_34.gif"
+											<img src="http://localhost:8080/static/resource/images/main_36.gif"
 												width="3" height="28">
 										</td>
 										<td width="63">
@@ -341,18 +304,15 @@ a {
 												cellspacing="0">
 												<tr>
 													<td height="20" style="cursor: hand"
-														onMouseOver="this.style.backgroundImage='url(resource/images/bg.gif)';this.style.borderStyle='solid';this.style.borderWidth='1';borderColor='#a6d0e7'; "
+														onMouseOver="this.style.backgroundImage='url(http://localhost:8080/static/resource/images/bg.gif)';this.style.borderStyle='solid';this.style.borderWidth='1';borderColor='#a6d0e7'; "
 														onmouseout="this.style.backgroundImage='url()';this.style.borderStyle='none'">
-														<div align="center" class="STYLE3">
-															<a href="#"
-																target="mainFrame">发件箱</a>
-														</div>
+														
 													</td>
 												</tr>
 											</table>
 										</td>
 										<td width="3">
-											<img src="http://localhost:8080/static/resource/images/main_34.gif"
+											<img src="http://localhost:8080/static/resource/images/main_36.gif"
 												width="3" height="28">
 										</td>
 										<td width="63">
@@ -360,33 +320,22 @@ a {
 												cellspacing="0">
 												<tr>
 													<td height="20" style="cursor: hand"
-														onMouseOver="this.style.backgroundImage='url(resource/images/bg.gif)';this.style.borderStyle='solid';this.style.borderWidth='1';borderColor='#a6d0e7'; "
+														onMouseOver="this.style.backgroundImage='url(http://localhost:8080/static/resource/images/bg.gif)';this.style.borderStyle='solid';this.style.borderWidth='1';borderColor='#a6d0e7'; "
 														onmouseout="this.style.backgroundImage='url()';this.style.borderStyle='none'">
-														<div align="center" class="STYLE3">
-															<a href="#"
-																target="mainFrame">房屋信息</a>
-														</div>
+														
 													</td>
 												</tr>
 											</table>
 										</td>
 										<td width="3">
-											<img src="http://localhost:8080/static/resource/images/main_34.gif"
+											<img src="http://localhost:8080/static/resource/images/main_36.gif"
 												width="3" height="28">
 										</td>
 										<td width="63">
 											<table width="58" border="0" align="center" cellpadding="0"
 												cellspacing="0">
 												<tr>
-													<td height="20" style="cursor: hand"
-														onMouseOver="this.style.backgroundImage='url(resource/images/bg.gif)';this.style.borderStyle='solid';this.style.borderWidth='1';borderColor='#a6d0e7'; "
-														onmouseout="this.style.backgroundImage='url()';this.style.borderStyle='none'">
-														<div align="center" class="STYLE3">
-															<a
-																href="#"
-																target="mainFrame">发送飞信</a>
-														</div>
-													</td>
+													
 												</tr>
 											</table>
 										</td>
