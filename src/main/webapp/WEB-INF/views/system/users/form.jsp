@@ -19,6 +19,15 @@
 				<tr><td>姓名：</td><td><input type="text" name="username" value="${users.username}" placeholder="姓名"></td></tr>
 				<tr><td>密码：</td><td><input type="password" name="password" value="${users.password}" placeholder="密码"></td></tr>
 				<tr><td>昵称：</td><td><input type="text" name="nickname" value="${users.nickname}" placeholder="昵称"></td></tr> 
+				<tr><td>归属角色：</td>
+					<td>
+						<select name="roles">
+							<c:forEach items="${roles}" var="r">
+								<option value="${r}" <c:if test="${users.roles eq r}">selected="selected"</c:if>>${r.rolename}</option>
+							</c:forEach>
+						</select>
+					</td>
+				</tr> 
 				<tr>
 					<td>性别：</td>
 					<td>

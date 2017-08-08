@@ -46,90 +46,98 @@ A:hover {
 -->
 </style>
 <script>
-var  highlightcolor='#c1ebff';
-var  clickcolor='#51b2f6';
-function  changeto(){
-source=event.srcElement;
-if  (source.tagName=="TR"||source.tagName=="TABLE")
-return;
-while(source.tagName!="TD")
-source=source.parentElement;
-source=source.parentElement;
-cs  =  source.children;
-//alert(cs.length);
-if  (cs[1].style.backgroundColor!=highlightcolor&&source.id!="nc"&&cs[1].style.backgroundColor!=clickcolor)
-for(i=0;i<cs.length;i++){
-	cs[i].style.backgroundColor=highlightcolor;
-}
-}
-
-function  changeback(){
-if  (event.fromElement.contains(event.toElement)||source.contains(event.toElement)||source.id=="nc")
-return
-if  (event.toElement!=source&&cs[1].style.backgroundColor!=clickcolor)
-//source.style.backgroundColor=originalcolor
-for(i=0;i<cs.length;i++){
-	cs[i].style.backgroundColor="";
-}
-}
-
-function  clickto(){
-source=event.srcElement;
-if  (source.tagName=="TR"||source.tagName=="TABLE")
-return;
-while(source.tagName!="TD")
-source=source.parentElement;
-source=source.parentElement;
-cs  =  source.children;
-//alert(cs.length);
-if  (cs[1].style.backgroundColor!=clickcolor&&source.id!="nc")
-for(i=0;i<cs.length;i++){
-	cs[i].style.backgroundColor=clickcolor;
-}
-else
-for(i=0;i<cs.length;i++){
-	cs[i].style.backgroundColor="";
-}
-}
+	var  highlightcolor='#c1ebff';
+	var  clickcolor='#51b2f6';
+	function  changeto(){
+		source=event.srcElement;
+		if  (source.tagName=="TR"||source.tagName=="TABLE")
+			return;
+		while(source.tagName!="TD")
+		source=source.parentElement;
+		source=source.parentElement;
+		cs  =  source.children;
+	//alert(cs.length);
+		if  (cs[1].style.backgroundColor!=highlightcolor&&source.id!="nc"&&cs[1].style.backgroundColor!=clickcolor)
+		for(i=0;i<cs.length;i++){
+			cs[i].style.backgroundColor=highlightcolor;
+		}
+	}
+	
+	function  changeback(){
+		if  (event.fromElement.contains(event.toElement)||source.contains(event.toElement)||source.id=="nc")
+			return
+		if  (event.toElement!=source&&cs[1].style.backgroundColor!=clickcolor)
+		//source.style.backgroundColor=originalcolor
+		for(i=0;i<cs.length;i++){
+			cs[i].style.backgroundColor="";
+		}
+	}
+	
+	function  clickto(){
+		source=event.srcElement;
+		if  (source.tagName=="TR"||source.tagName=="TABLE")
+			return;
+		while(source.tagName!="TD")
+		source=source.parentElement;
+		source=source.parentElement;
+		cs  =  source.children;
+		//alert(cs.length);
+		if  (cs[1].style.backgroundColor!=clickcolor&&source.id!="nc")
+		for(i=0;i<cs.length;i++){
+			cs[i].style.backgroundColor=clickcolor;
+		}
+		else
+		for(i=0;i<cs.length;i++){
+			cs[i].style.backgroundColor="";
+		}
+	}
 </script>
 <script type="text/javascript">
 	function add(){  
-			window.location="<%=basePath%>/system/users/insert";
+			window.location="<%=basePath%>system/users/insert";
 		}
 
 </script>
-  </head>
+</head>
   
-  <body>
-  <form method="post">
+<body>
   
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
   <tr>
     <td height="30" background="<%=basePath%>static/resource/images/tab_05.gif">
+    	<form method="post">
 	    <table width="100%" border="0" cellspacing="0" cellpadding="0">
 	      <tr>
 	        <td width="12" height="30"><img src="<%=basePath%>static/resource/images/tab_03.gif" width="12" height="30" /></td>
-	                <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
-	          <tr>
-	            <td class="STYLE4" align="center">&nbsp;&nbsp;请输入查询内容：<input type="text" name="customerInput" style="width: 290px"/></td>
-	            <td class="STYLE4">&nbsp;&nbsp;请选择查询方式：<select name="queryType" style="width: 100px">
-	      					<option value="1">客户姓名</option>
-	     				 	<option value="2">客户状态</option>
-	     				 	<option value="3">客户来源</option>
-	     				 	<option value="4">客户类型</option>
-	     				 	<option value="5">所属员工</option>
-	     				 	<option value="6">客户公司</option>
-	   				 </select>            
-	   				</td>
-	            <td class="STYLE4">&nbsp;&nbsp;<input  type="submit" value="查询" style="width:50px"/></td>
-	            <td class="STYLE4">&nbsp;&nbsp;<input  type="button" value="添加"  onclick="add()"  style="width:50px"/></td>            
-	          </tr>
-	        </table></td>
+	        <td>
+	       
+		        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+		          <tr>
+		            <td class="STYLE4" align="center">姓名：<input type="text" name="username" style="width: 50px"/></td>
+		            <td class="STYLE4" align="center">&nbsp;&nbsp;昵称：<input type="text" name="nickname" style="width: 50px"/></td>
+		            <td class="STYLE4" align="center">&nbsp;&nbsp;性别：
+		            	<select name="gender" >
+		            		 <option value="">全部(单选)</option>
+							<c:forEach items="${gender}" var="sex">
+								<option value="${sex}" <c:if test="${page.entity.gender eq sex }">selected="selected"</c:if>>${sex.name}</option>
+							</c:forEach>
+						</select>
+					</td>
+		            <td class="STYLE4" align="center">检索时间：<input type="text" name="beginCreateTime" style="width: 100px" class="sang_Calender"/><script type="text/javascript" src="<%=basePath%>static/resource/js/datetime.js"></script></td>
+		            <td class="STYLE4" align="center">至</td>
+		            <td class="STYLE4" align="center"><input type="text" name="endCreateTime" style="width: 100px" class="sang_Calender"/><script type="text/javascript" src="<%=basePath%>static/resource/js/datetime.js"></script></td>
+		            <td class="STYLE4">&nbsp;&nbsp;<input  type="submit" value="查询" style="width:50px"/></td>
+		            <td class="STYLE4">&nbsp;&nbsp;<input  type="button" value="添加"  onclick="add()"  style="width:50px"/></td>            
+		          </tr>
+		        </table>
+		    
+	        </td>
 	        <td width="16"><img src="<%=basePath%>static/resource/images/tab_07.gif" width="16" height="30" />
-	        	 <input   type="hidden"   name="userId"   value=""  />
+	        	 <input   type="hidden"   name="id"   value=""  />
 	        </td>
 	      </tr>
 	    </table>
+	    </form>
     </td>
   </tr>
 
@@ -152,7 +160,7 @@ for(i=0;i<cs.length;i++){
 			<td width="6%" height="22" background="<%=basePath%>static/resource/images/bg2.gif" bgcolor="#FFFFFF"><div align="center"><span class="STYLE1">IP</span></div></td>
 			<td width="15%" height="22" background="<%=basePath%>static/resource/images/bg2.gif" bgcolor="#FFFFFF" class="STYLE1"><div align="center">基本操作</div></td>
 		</tr>
-		<c:forEach items="${users.data}" var="u">
+		<c:forEach items="${page.data}" var="u">
  		<tr>
             <td height="20" bgcolor="#FFFFFF"style="width: 3%"><div align="center"><span class="STYLE1">${u.id}</span></div></td>
             <td height="20" bgcolor="#FFFFFF"style="width: 3%"><div align="center"><span class="STYLE1">${u.username}</span></div></td>
@@ -180,40 +188,44 @@ for(i=0;i<cs.length;i++){
         <td width="12" height="35"><img src="<%=basePath%>static/resource/images/tab_18.gif" width="12" height="35" /></td>
         <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
           <tr>
-            <td class="STYLE4">&nbsp;&nbsp;<span><%-- 共${page.totalRecord }条数据</span> <span><i>|</i>每页显示
+            <td class="STYLE4">&nbsp;&nbsp;<span>共${page.totalRecord }条数据</span> <span><i>|</i>每页显示
 			<select id="_page_ps_select">
 				<c:forEach items="${page.defaultPageSizeSelect}" var="s">
-					<option value="${s }" <c:if test="${page.pageSize == s}">selected="selected"</c:if>>${s }</option>
+					<option value="${s }" <c:if test="${page.pageSize == s}">selected="selected"</c:if>>${s}</option>
 				</c:forEach>
-			</select>条 --%></span></td>
+			</select>条</span></td>
             <td><table border="0" align="right" cellpadding="0" cellspacing="0">
                 <tr>
-			        <%-- <c:if test="${!page.first}">
-						<a href="?pn=1&ps=${page.pageSize}${page.urlParams}" class="first-page"> --%>
-							<td width="40"><img src="<%=basePath%>static/resource/images/first.gif" width="37" height="15" /></td>
-						<%-- </a>
-						<a href="?pn=${page.pageNo-1}&ps=${page.pageSize}${page.urlParams}" class="prev-page"> --%>
-							<td width="45"><img src="<%=basePath%>static/resource/images/back.gif" width="43" height="15" /></td>
-						<%-- </a>
+			        <c:if test="${!page.first}">
+					<td width="40">
+					<a href="<%=basePath%>system/users?pn=1&ps=${page.pageSize}${page.urlParams}">
+					<img src="<%=basePath%>static/resource/images/first.gif" width="37" height="15"  />
+					</a>
+					</td>
+					<td width="45">
+					<a href="<%=basePath%>system/users?pn=${page.pageNo-1}&ps=${page.pageSize}${page.urlParams}">
+					<img src="<%=basePath%>static/resource/images/back.gif" width="43" height="15" />
+					</a>
+					</td>
 					</c:if>
-			
+					<td>
 					<c:forEach begin="${page.viewStartPage}" end="${page.viewEndPage}" step="1" var="pageIndex">
 						<a <c:if test="${page.pageNo == pageIndex}">class="active"</c:if>
-						href="?pn=${pageIndex}&ps=${page.pageSize}${page.urlParams}">${pageIndex}</a>
+						href="<%=basePath%>system/users?pn=${pageIndex}&ps=${page.pageSize}${page.urlParams}">${pageIndex}</a>
 					</c:forEach>
-			
+					</td>
 					<c:if test="${!page.last}">
-						<a href="?pn=${page.pageNo+1}&ps=${page.pageSize}${page.urlParams}" class="next-page"> --%>
-							<td width="45"><img src="<%=basePath%>static/resource/images/next.gif" width="43" height="15" /></td>
-						<%-- </a>
-						<a href="?pn=${page.totalPage}&ps=${page.pageSize}${page.urlParams}" class="last-page"> --%>
-							<td width="40"><img src="<%=basePath%>static/resource/images/last.gif" width="37" height="15" /></td>
-						<%-- </a>
-					</c:if> --%>
-                  <td width="100"><div align="center"><span class="STYLE1">转到第
-                    <input name="textfield" type="text" size="4" style="height:12px; width:20px; border:1px solid #999999;" />页 </span></div>
-                  </td>
-                  <td width="40"><img src="<%=basePath%>static/resource/images/go.gif" width="37" height="15" /></td>
+					<td width="45">
+					<a href="<%=basePath%>system/users?pn=${page.pageNo+1}&ps=${page.pageSize}${page.urlParams}">
+					<img src="<%=basePath%>static/resource/images/next.gif" width="43" height="15"  />
+					</a>
+					</td>
+					<td width="40">
+					<a href="<%=basePath%>system/users?pn=${page.totalPage}&ps=${page.pageSize}${page.urlParams}">
+					<img src="<%=basePath%>static/resource/images/last.gif" width="37" height="15" />
+					</a>
+					</td>
+					</c:if>
                 </tr>
             </table></td>
           </tr>
@@ -223,6 +235,13 @@ for(i=0;i<cs.length;i++){
     </table></td>
   </tr>
 </table>
-</form>
 </body>
+<script type="text/javascript" src="<%=basePath%>static/resource/js/jquery.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	$("#_page_ps_select").change(function(){
+		window.location.href = '<%=basePath%>system/users?pn=${page.pageNo}${page.urlParams}&ps='+$(this).val();
+	});
+});
+</script>
 </html>

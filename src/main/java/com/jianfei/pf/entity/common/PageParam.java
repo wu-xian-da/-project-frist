@@ -16,7 +16,7 @@ public class PageParam {
 	
 	public static final String PAGE_NO_NAME = "pn";//页码参数
 	
-	private int ps = 10;//默认值
+	private int ps = 20;//默认值
 	
 	private int pn = 1;//默认值
 	

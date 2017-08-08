@@ -88,7 +88,7 @@ public class UsersController {
 
 	@RequestMapping
 	public String list(Model model,Users users){
-		model.addAttribute("users",this.usersService.findPage(users));
+		model.addAttribute("page",this.usersService.findPage(users));
 		this.setModel(model);
 		return "system/users/list";
 	}
