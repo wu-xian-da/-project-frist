@@ -23,5 +23,5 @@ public class Roles extends BaseEntity{
 	@FormQuery
 	private String rolename;//角色名称
 	
-	private Users userId;//角色与用户的关联
+	//private Users userId;
 }

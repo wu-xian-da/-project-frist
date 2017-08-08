@@ -36,6 +36,9 @@ public class Users extends BaseEntity{
 	
 	private Gender gender;//性别
 	
+	@FormQuery("role.id")
+	private Roles role;//角色与用户的关联
+	
 	private int age;//年龄
 	
 	private Date createTime;//创建时间
@@ -44,19 +47,9 @@ public class Users extends BaseEntity{
 	
 	private String ip;//登录IP
 	
-	private String roles;
-	
 	@FormQuery
     private String beginCreateTime;
     
     @FormQuery
     private String endCreateTime;
-	
-	public String getRoleList(){
-	    if(this.roles == null || this.roles.isEmpty()){
-	        return null;
-	    }
-	    return StringUtils.join(this.roles);
-	}
-
 }

@@ -14,16 +14,16 @@
 		<div class="box information-management-edit">
 		<h2>${empty users.id ? "新增" : "编辑" }用户</h2>
 		<form method="post">
-			<input type="hidden" name="id" value="${users.id }">
+			<input type="hidden" name="id" value="${users.id}">
 			<table>
 				<tr><td>姓名：</td><td><input type="text" name="username" value="${users.username}" placeholder="姓名"></td></tr>
 				<tr><td>密码：</td><td><input type="password" name="password" value="${users.password}" placeholder="密码"></td></tr>
 				<tr><td>昵称：</td><td><input type="text" name="nickname" value="${users.nickname}" placeholder="昵称"></td></tr> 
-				<tr><td>归属角色：</td>
+				<tr><td>角色：</td>
 					<td>
-						<select name="roles">
+						<select name="role.id">
 							<c:forEach items="${roles}" var="r">
-								<option value="${r}" <c:if test="${users.roles eq r}">selected="selected"</c:if>>${r.rolename}</option>
+								<option value="${r.id}" <c:if test="${users.role.id eq r.id}">selected="selected"</c:if>>${r.rolename}</option>
 							</c:forEach>
 						</select>
 					</td>

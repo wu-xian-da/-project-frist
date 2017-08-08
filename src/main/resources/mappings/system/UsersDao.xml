@@ -2,17 +2,12 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.jianfei.pf.dao.system.UsersDao">
 	
-	<resultMap id="userMap" type="com.jianfei.pf.entity.system.Users">
-		<id property="id" column="id" />
-		<result property="nickname" column="nickname" />
-		<collection column="id" property="roles" ofType="string" select="findRolesByuserId"/>
-	</resultMap>
-	
 	<sql id="userColumns">
 		a.id id,
 		a.username username,
 		a.password password,
 		a.nickname nickname,
+		a.role_id AS "role.id",
 		a.gender gender,
 		a.age age,
 		a.create_time createTime,
@@ -21,8 +16,8 @@
 	</sql>
 	
 	<insert id="insert" useGeneratedKeys="true" keyProperty="id">
-		insert into sys_users (username,password,nickname,gender,age,create_time)
-		values (#{username},#{password},#{nickname},#{gender},#{age},#{createTime})
+		insert into sys_users (username,password,nickname,role_id,gender,age,create_time)
+		values (#{username},#{password},#{nickname},#{role.id},#{gender},#{age},#{createTime})
 	</insert>
 	
 	<update id="updateLoginTimeAndIp">
@@ -34,6 +29,7 @@
 		username = #{username},
 		password = #{password},
 		nickname = #{nickname},
+		role_id = #{role.id},
 		gender = #{gender},
 		age = #{age}
 		where id = #{id}
@@ -43,14 +39,10 @@
 		delete from sys_users where id = #{id}
 	</delete>
 	
-	<select id="findAll" resultMap="userMap">
+	<select id="findAll">
 		SELECT <include refid="userColumns"></include>
 		FROM sys_users a 
 		ORDER BY a.id asc
-	</select>
-	
-	<select id="findRolesByuserId" resultType="string">
-		select role_name from sys_roles where user_id = #{id}
 	</select>
 	
 	<select id="findById" resultType="com.jianfei.pf.entity.system.Users" parameterType="java.lang.Integer">
@@ -63,9 +55,11 @@
 		FROM sys_users a WHERE a.nickname = #{nickname}
 	</select>
 	
-	<select id="findPage" resultType="com.jianfei.pf.entity.system.Users" resultMap="userMap">
-		select <include refid="userColumns" />
+	<select id="findPage" resultType="com.jianfei.pf.entity.system.Users">
+		select <include refid="userColumns" />,
+		r.role_name AS "role.rolename"
 	    from sys_users a
+	    LEFT JOIN sys_roles r ON a.role_id=r.id
 	    where 1=1
     	<if test="null != username and '' != username">and a.username like CONCAT('%',#{username},'%')</if>
 	    <if test="null != nickname and '' != nickname">and a.nickname like CONCAT('%',#{nickname},'%') </if>
