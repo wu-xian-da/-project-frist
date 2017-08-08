@@ -1,8 +1,3 @@
-/**
-  *project demo-l
-  *@author changchun.wu
-  *2017年7月5日下午2:50:09
-  */
 package com.jianfei.pf.utils.mybatis;
 
 import static org.springframework.util.Assert.notNull;
@@ -12,7 +7,10 @@ import static org.springframework.util.StringUtils.hasLength;
 import static org.springframework.util.StringUtils.tokenizeToStringArray;
 
 import java.io.IOException;
+import java.lang.reflect.Method;
 import java.sql.SQLException;
+import java.util.Collection;
+import java.util.List;
 import java.util.Properties;
 import java.util.Set;
 
@@ -52,6 +50,10 @@ import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.core.NestedIOException;
 import org.springframework.core.io.Resource;
 import org.springframework.jdbc.datasource.TransactionAwareDataSourceProxy;
+
+import com.jianfei.pf.entity.common.Page;
+import com.jianfei.pf.utils.mybatis.interceptor.PageInterceptor;
+
 
 
 public class MySqlSessionFactoryBean implements FactoryBean<SqlSessionFactory>, InitializingBean, ApplicationListener<ApplicationEvent> {
@@ -527,11 +529,45 @@ public class MySqlSessionFactoryBean implements FactoryBean<SqlSessionFactory>, 
       }
     }
     
+    List<Interceptor> interceptors = configuration.getInterceptors();
+    for(Interceptor interceptor : interceptors){
+        if(interceptor instanceof PageInterceptor){
+            this.setPageInterceptorPageId((PageInterceptor)interceptor, configuration.getMappedStatements());
+        }
+    }
     return this.sqlSessionFactoryBuilder.build(configuration);
   }
+  
+  private void setPageInterceptorPageId(PageInterceptor pageInterceptor, Collection<MappedStatement> mappedStatements){
+      try{
+          for(Object obj : mappedStatements){
+              if(obj instanceof MappedStatement){
+                  MappedStatement ms = (MappedStatement)obj;
+                  if(ms.getSqlCommandType() == SqlCommandType.SELECT){
+                      String id = ms.getId();
+                      String className = id.substring(0, id.lastIndexOf("."));
+                      String methodName = id.substring(id.lastIndexOf(".") + 1);
+                      try {
+                          Class<?> daoClass = Class.forName(className);
+                          Method daoClassMethods[] = daoClass.getMethods();
+                          for (Method method : daoClassMethods) {
+                              if (method.getName().equals(methodName) && method.getReturnType() == Page.class) {
+                                  pageInterceptor.addPageId(id);
+                              }
+                          }
+                      } catch (Exception e) {
+                          e.printStackTrace();
+                      }
+                  }
+              }
+          }
+      }
+      catch(Exception e){
+          e.printStackTrace();
+      }
+  }
 
-
-/**
+  /**
    * {@inheritDoc}
    */
   public SqlSessionFactory getObject() throws Exception {
@@ -567,5 +603,4 @@ public class MySqlSessionFactoryBean implements FactoryBean<SqlSessionFactory>, 
   }
 
 }
-
 

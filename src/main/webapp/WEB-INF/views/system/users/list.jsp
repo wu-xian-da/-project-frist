@@ -152,7 +152,7 @@ for(i=0;i<cs.length;i++){
 			<td width="6%" height="22" background="<%=basePath%>static/resource/images/bg2.gif" bgcolor="#FFFFFF"><div align="center"><span class="STYLE1">IP</span></div></td>
 			<td width="15%" height="22" background="<%=basePath%>static/resource/images/bg2.gif" bgcolor="#FFFFFF" class="STYLE1"><div align="center">基本操作</div></td>
 		</tr>
-		<c:forEach items="${users }" var="u">
+		<c:forEach items="${users.data}" var="u">
  		<tr>
             <td height="20" bgcolor="#FFFFFF"style="width: 3%"><div align="center"><span class="STYLE1">${u.id}</span></div></td>
             <td height="20" bgcolor="#FFFFFF"style="width: 3%"><div align="center"><span class="STYLE1">${u.username}</span></div></td>

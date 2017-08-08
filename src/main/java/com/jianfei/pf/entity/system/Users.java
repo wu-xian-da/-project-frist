@@ -46,6 +46,12 @@ public class Users extends BaseEntity{
 	
 	private String roles;
 	
+	@FormQuery
+    private String beginCreateTime;
+    
+    @FormQuery
+    private String endCreateTime;
+	
 	public String getRoleList(){
 	    if(this.roles == null || this.roles.isEmpty()){
 	        return null;

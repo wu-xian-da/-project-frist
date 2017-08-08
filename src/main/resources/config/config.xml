@@ -3,7 +3,7 @@
 <configuration>
 	<!-- 全局参数 -->
 	<settings>
-		<setting name="proxyFactory" value="CGLIB"/>
+		<!-- <setting name="proxyFactory" value="CGLIB"/> -->
 		 
 		<!-- 使全局的映射器启用或禁用缓存。 -->
 		<setting name="cacheEnabled" value="true"/>
@@ -31,6 +31,13 @@
         
         <setting name="logImpl" value="LOG4J"/>
 	</settings>
+	
+	<objectFactory type="com.jianfei.pf.utils.mybatis.interceptor.PageObjectFactory" />
+	<objectWrapperFactory type="com.jianfei.pf.utils.mybatis.interceptor.PageObjectWrapperFactory" />
+	
+	<plugins>
+	    <plugin interceptor="com.jianfei.pf.utils.mybatis.interceptor.PageInterceptor"></plugin>
+	</plugins>
 	
 </configuration>
 

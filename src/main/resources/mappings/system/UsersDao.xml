@@ -46,7 +46,7 @@
 	<select id="findAll" resultMap="userMap">
 		SELECT <include refid="userColumns"></include>
 		FROM sys_users a 
-		ORDER BY a.id DESC
+		ORDER BY a.id asc
 	</select>
 	
 	<select id="findRolesByuserId" resultType="string">
@@ -61,5 +61,17 @@
 	<select id="findUsersByNickname" resultType="com.jianfei.pf.entity.system.Users" >
 		SELECT <include refid="userColumns"></include>
 		FROM sys_users a WHERE a.nickname = #{nickname}
+	</select>
+	
+	<select id="findPage" resultType="com.jianfei.pf.entity.system.Users" resultMap="userMap">
+		select <include refid="userColumns" />
+	    from sys_users a
+	    where 1=1
+    	<if test="null != username and '' != username">a.username like CONCAT('%',#{username},'%')</if>
+	    <if test="null != nickname and '' != nickname">and a.nickname like CONCAT('%',#{nickname},'%') </if>
+        <if test="null != gender and '' != gender">and a.gender = #{gender}</if>
+        <if test="null != beginCreateTime and '' != beginCreateTime">and DATE_FORMAT(a.create_time, '%Y-%m-%d')  <![CDATA[>=]]> #{beginCreateTime}</if>
+        <if test="null != endCreateTime and '' != endCreateTime">and DATE_FORMAT(a.create_time, '%Y-%m-%d')  <![CDATA[<=]]> #{endCreateTime}</if>
+    	order by a.id asc
 	</select>
 </mapper>
