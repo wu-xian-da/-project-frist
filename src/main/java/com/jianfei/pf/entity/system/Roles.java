@@ -5,6 +5,10 @@
   */
 package com.jianfei.pf.entity.system;
 
+import java.util.List;
+
+import org.apache.commons.lang3.StringUtils;
+
 import com.jianfei.pf.base.annotation.FormQuery;
 import com.jianfei.pf.base.entity.BaseEntity;
 
@@ -23,5 +27,12 @@ public class Roles extends BaseEntity{
 	@FormQuery
 	private String rolename;//角色名称
 	
-	//private Users userId;
+	private List<String> users;
+	
+	public String getUserList(){
+	    if(this.users == null || this.users.isEmpty()){
+	        return null;
+	    }
+	    return StringUtils.join(this.users,",");
+	}
 }

@@ -28,7 +28,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  <frameset id="app-main" rows="98,*,8"  border="7" bordercolor="#1873aa"     scrolling="No" noresize="noresize"  framespacing="0">
 	<frame src="<%=basePath%>static/layout/tops.jsp" name="topFrame" scrolling="No"  noresize="noresize" id="topFrame" />
 	<frameset cols="166,*">
-		<frame src="<%=basePath%>static/layout/lefts.jsp"   noresize="noresize" />
+		<frame src="<%=basePath%>static/layout/left_s.jsp"   noresize="noresize" />
 		<frame src="<%=basePath%>static/layout/bg.jsp"  name="mainFrame" class="bg-welcome" />
 	</frameset>
 		<frame src="<%=basePath%>view/frame/down.jsp" name="bottomFrame" scrolling="No" noresize="noresize" id="bottomFrame" />

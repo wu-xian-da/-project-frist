@@ -21,7 +21,9 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import com.alibaba.druid.pool.DruidDataSource;
 import com.alibaba.fastjson.JSON;
 import com.jianfei.pf.entity.common.Gender;
+import com.jianfei.pf.entity.system.Roles;
 import com.jianfei.pf.entity.system.Users;
+import com.jianfei.pf.service.system.RolesService;
 import com.jianfei.pf.service.system.UsersService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -31,6 +33,9 @@ public class UsersTest {
 	
 	@Autowired
 	private UsersService usersService;
+	
+	@Autowired
+	private RolesService rolesService;
 	
 	//@Test
 	/*public void InsertUsers(){
@@ -68,4 +73,9 @@ public class UsersTest {
 		System.out.println(dataSources.getConnection());
 	}
 
+	@Test
+	public void findAllRoles(){
+		List<Roles> roleList = rolesService.findAll();
+		System.out.println(roleList);
+	}
 }

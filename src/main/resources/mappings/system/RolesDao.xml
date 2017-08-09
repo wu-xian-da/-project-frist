@@ -2,10 +2,42 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.jianfei.pf.dao.system.RolesDao">
 	
+	<resultMap id="roleMap" type="com.jianfei.pf.entity.system.Roles">
+		<id property="id" column="id" />
+		<result property="rolename" column="role_name" />
+		<collection column="id" property="users" ofType="string" select="findUserByRoleId"/>
+	</resultMap>
+	
+	<insert id="insert" useGeneratedKeys="true" keyProperty="id">
+		insert into sys_roles (role_name) values (#{rolename})
+	</insert>
+	
+	<update id="update">
+		update sys_roles set role_name = #{rolename} where id = #{id}
+	</update>
+	
+	<delete id="delete">
+		delete from sys_roles where id = #{id}
+	</delete>
+	
+	<select id="findById" resultType="com.jianfei.pf.entity.system.Roles">
+		select * from sys_roles where id = #{id}
+	</select>
+	
 	<select id="findAll" resultType="com.jianfei.pf.entity.system.Roles">
-		select id , role_name
-		from sys_roles r
+		select r.id,r.role_name from sys_roles r
 		ORDER BY r.id asc
-		<!-- LEFT JOIN sys_users u ON r.id=u.role_id -->
+	</select>
+	
+	<select id="findUserByRoleId" resultType="string">
+		select nickname from sys_users where role_id = #{id}
+	</select>
+	
+	<select id="findPage" resultType="com.jianfei.pf.entity.system.Roles" resultMap="roleMap">
+		select r.id,r.role_name from sys_roles r
+		<where>
+			<if test="rolename != null and rolename != '' ">r.role_name like CONCAT ('%',#{rolename},'%')</if>
+		</where>
+		ORDER BY r.id asc
 	</select>
 </mapper>

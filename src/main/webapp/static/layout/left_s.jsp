@@ -57,7 +57,7 @@ a {
 }
 }
 </style>
-		<script>
+<script>
 var he=document.body.clientHeight-105
 document.write("<div id=tt style=height:"+he+";overflow:hidden>")
 </script>
@@ -157,7 +157,7 @@ document.write("<div id=tt style=height:"+he+";overflow:hidden>")
 																				onmouseover="this.style.borderStyle='solid';this.style.borderWidth='1';borderColor='#7bc4d3'; "
 																				onmouseout="this.style.borderStyle='none'">
 																				<span class="STYLE3"> <a
-																					href="http://localhost:8080/static/servlet/CustomerQueryNoAdmeasureServlet"
+																					href="http://localhost:8080/system/roles"
 																					target="mainFrame">角色管理</a> </span>
 																			</td>
 																		</tr>
