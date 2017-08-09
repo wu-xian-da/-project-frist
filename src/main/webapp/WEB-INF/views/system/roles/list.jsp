@@ -105,7 +105,7 @@ A:hover {
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
   <tr>
     <td height="30" background="<%=basePath%>static/resource/images/tab_05.gif">
-    	<form method="post">
+    	<form method="post" action="<%=basePath%>system/roles">
 	    <table width="100%" border="0" cellspacing="0" cellpadding="0">
 	      <tr>
 	        <td width="12" height="30"><img src="<%=basePath%>static/resource/images/tab_03.gif" width="12" height="30" /></td>
@@ -114,7 +114,7 @@ A:hover {
 		        <table width="100%" border="0" cellspacing="0" cellpadding="0">
 		          <tr>
 		            <td class="STYLE4" align="left" width="10%">条件检索</td>
-		            <td class="STYLE4" align="left" width="60%">&nbsp;&nbsp;角色名称：<input type="text" name="nickname" style="width: 100px"/></td>
+		            <td class="STYLE4" align="left" width="60%">&nbsp;&nbsp;角色名称：<input type="text" name="rolename" style="width: 100px"/></td>
 		            <td class="STYLE4" align="right" width="15%">&nbsp;&nbsp;<input  type="submit" value="查询" style="width:50px"/></td>
 		            <td class="STYLE4" align="right" width="10%">&nbsp;&nbsp;<input  type="button" value="添加"  onclick="add()"  style="width:50px"/></td>            
 		          </tr>

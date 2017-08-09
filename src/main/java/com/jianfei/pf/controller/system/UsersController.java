@@ -11,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -22,14 +21,14 @@ import com.jianfei.pf.service.system.UsersService;
 
 @Controller
 @RequestMapping(value="/system/users")
-public class UsersController {
+public class UsersController{
 	
 	@Autowired
 	private UsersService usersService;
 	
 	@Autowired
 	private RolesService rolesService;
-
+	
 	private void setModel (Model model) {
 		model.addAttribute("gender",Gender.values());
 		model.addAttribute("roles",rolesService.findAll());

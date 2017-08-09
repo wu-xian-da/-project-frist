@@ -37,20 +37,20 @@ public class UsersTest {
 	@Autowired
 	private RolesService rolesService;
 	
-	//@Test
-	/*public void InsertUsers(){
+	@Test
+	public void InsertUsers(){
 		Users users = new Users();
-		users.setUsername("xiaoming");
+		users.setUsername("水电费地方");
 		users.setPassword("123");
-		users.setNickname("mingtian");
-		users.setGender("nan");
+		users.setNickname("水电费水电费是服");
+		users.setGender(Gender.NAN);
 		users.setAge(12);
 		users.setCreateTime(new Date());
 		users.setLoginTime(new Date());
 		users.setIp("0.0.0.0.0.0.1");
-		int result = usersService.insertUsers(users);
+		int result = usersService.insert(users);
 		System.out.println(result);
-	}*/
+	}
 	
 	@Test
 	public void findUsersById(){
@@ -78,4 +78,12 @@ public class UsersTest {
 		List<Roles> roleList = rolesService.findAll();
 		System.out.println(roleList);
 	}
+	
+	@Test
+	public void insertRoles(){
+		Roles role = new Roles();
+		role.setRolename("三等奖方式的缴费卡");
+		rolesService.insert(role);
+	}
+	
 }

@@ -34,10 +34,9 @@
 	</select>
 	
 	<select id="findPage" resultType="com.jianfei.pf.entity.system.Roles" resultMap="roleMap">
-		select r.id,r.role_name from sys_roles r
-		<where>
-			<if test="rolename != null and rolename != '' ">r.role_name like CONCAT ('%',#{rolename},'%')</if>
-		</where>
+		select r.id,r.role_name from sys_roles r 
+		where 1=1
+		<if test="rolename != null and rolename != '' ">and r.role_name like CONCAT ('%',#{rolename},'%')</if>
 		ORDER BY r.id asc
 	</select>
 </mapper>

@@ -28,7 +28,7 @@ public class Roles extends BaseEntity{
 	private String rolename;//角色名称
 	
 	private List<String> users;
-	
+
 	public String getUserList(){
 	    if(this.users == null || this.users.isEmpty()){
 	        return null;
