@@ -21,7 +21,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<script type="text/javascript" src="<%=basePath%>static/resource/js/CheckForm.js"></script>
 	<script type="text/javascript" src="<%=basePath%>static/resource/js/My97DatePicker/WdatePicker.js"></script>
 	<script language="JavaScript" type="text/javascript" src="<%=basePath%>static/resource/js/FormValid.js"></script>
-	<script type="text/javascript" src="<%=basePath%>static/resource/js/jquery.min.js"></script>
 	<script type="text/javascript" src="<%=basePath%>static/resource/js/jquery-2.0.0.js"></script>
 	<script type="text/javascript" src="<%=basePath%>static/resource/js/validate-1708.js"></script>
 </head>
@@ -43,13 +42,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	  	<td bgcolor="#FFFDF0" width="160px"><div align="center">密码：</div></td>
 		<td colspan="3" bgcolor="#FFFFFF">
 		<input id="userpassword" type="password" maxlength="10" style="width: 145px" valid="required"  errmsg="密码不能为空!" name="password" value="${users.password }">
-		<span id="err1"></span><span id="err2"></span>
+		<span id="err1"></span><span id="err2"></span><span id="err3"></span>
 		</td>
     </tr>
     <tr>
 	  	<td bgcolor="#FFFDF0" width="160px"><div align="center">昵称：</div></td>
 		<td colspan="3" bgcolor="#FFFFFF">
-		<input type="text" maxlength="10" style="width: 145px" valid="required"  errmsg="昵称不能为空!" name="nickname" value="${users.nickname }">
+		<input id="usernickname" type="text" maxlength="10" style="width: 145px" valid="required"  errmsg="昵称不能为空!" name="nickname" value="${users.nickname }">
+		<span id="err5"></span>
 		</td>
     </tr>
     <tr>
@@ -81,7 +81,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	  	<td bgcolor="#FFFDF0" width="160px"><div align="center">年龄：</div></td>
 		<td colspan="3" bgcolor="#FFFFFF">
 		<input id="userage" type="text" maxlength="2" style="width: 145px" valid="required|isNumber" errmsg="年龄不能为空!|请输入正确的年龄!" name="age" value="${users.age }">
-		<span id="err3"></span>
+		<span id="err4"></span>
 		</td>
     </tr>
 </table>

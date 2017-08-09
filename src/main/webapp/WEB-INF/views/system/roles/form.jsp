@@ -21,6 +21,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<script type="text/javascript" src="<%=basePath%>static/resource/js/CheckForm.js"></script>
 	<script type="text/javascript" src="<%=basePath%>static/resource/js/My97DatePicker/WdatePicker.js"></script>
 	<script language="JavaScript" type="text/javascript" src="<%=basePath%>static/resource/js/FormValid.js"></script>
+	<script type="text/javascript" src="<%=basePath%>static/resource/js/jquery-2.0.0.js"></script>
+	<script type="text/javascript" src="<%=basePath%>static/resource/js/validate-1708.js"></script>
 </head>
   
 <body>
@@ -33,7 +35,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	  	<td bgcolor="#FFFDF0" width="160px"><div align="center">角色名称：</div></td>
 		<td colspan="3" bgcolor="#FFFFFF">
 		<input type="hidden" name="id" value="${roles.id}">
-		<input type="text" maxlength="10" style="width: 145px" valid="required"  errmsg="角色名称不能为空!" name="rolename" value="${roles.rolename }">
+		<input id="rolerolename" type="text" maxlength="10" style="width: 145px" valid="required"  errmsg="角色名称不能为空!" name="rolename" value="${roles.rolename }">
+		<span id="err"></span>
 		</td>
     </tr>
 </table>
@@ -41,7 +44,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <table class=editTable cellSpacing=1 cellPadding=0 width="100%" align=center border=0>
 	<tr bgcolor="#ECF3FD">
 		<td width="25%"></td>
-		<td width="17%"><input type="submit" name="submit"  value="${empty roles.id ? "新增" : "编辑" }"></td>
+		<td width="17%"><input id="rolesumbit" type="submit" name="submit"  value="${empty roles.id ? "新增" : "编辑" }"></td>
 		<td width="17%"><c:if test="${empty roles.id}"><input type="reset" name="reset"  value="重置"></c:if></td>
 		<td width="3%"><input type="button" name="button"  onClick="history.back() "  value="返回"></td>
 		<td width="46%"></td>

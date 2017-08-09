@@ -3,7 +3,7 @@ $(function(){
 	$("#usersubmit").click(function(){
 		var age = $("#userage").val();
 		if (age < 0) {
-			$("#err3").html("年龄必须大于0");
+			$("#err4").html("年龄必须大于0");
 		}else {
 			return true;
 		}
@@ -23,16 +23,43 @@ $(function(){
 					$("#err1").html("密码长度小于6")
 					return false;
 				} else{
-					$("#err2").html("密码长度大于6")
-					$("#err1").html("")
+					return true;
 				}
 			}else{
 				$("#err1").html("")
 			}
 			
 		} else {
-			$("#err1").html("密码有数字字母组合")
+			$("#err3").html("密码由数字字母组合")
 			return false;
 		}
 	})
 });
+
+$(function(){
+	$("#usersubmit").click(function(){
+		var nickname = $("#usernickname").val();
+		var reg = /^[0-9a-zA-Z]+$/;
+		if (reg.test(nickname)) { 
+			return true; 
+		}else{ 
+			$("#err5").html("账号只能是字母或数字!"); 
+			return false; 
+		}
+	});
+});
+
+$(function(){
+	$("#rolesumbit").click(function(){
+		var rolename = $("#rolerolename").val();
+		var reg = /^[\u4e00-\u9fa5_a-zA-Z0-9]+$/;
+		var flag = reg.test(rolename);
+		if (flag) {
+			return true;
+		} else {
+			$("#err").html("角色名称由汉字字母组合")
+			return false;
+		}
+	});
+});
+
