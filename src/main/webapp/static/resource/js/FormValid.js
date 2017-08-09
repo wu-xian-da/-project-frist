@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2006-2008 coderhome.net
  * All rights reserved.
- * Support : Ö¾·²(dzjzmj@163.com)
+ * Support : Ö¾ï¿½ï¿½(dzjzmj@163.com)
  *
  * Version :  0.5
  */
@@ -215,10 +215,10 @@ String.prototype.trim = function() {
 	return this.replace(/^\s*|\s*$/g, "");
 }
 var RegExps = function(){};
-RegExps.isNumber = /^[-\+]?\d+(\.\d+)?$/;
+RegExps.isNumber = /^[0-9]*[1-9][0-9]*$/;
 RegExps.isEmail = /([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)/;
 RegExps.isPhone = /^((\(\d{2,3}\))|(\d{3}\-))?(\(0\d{2,3}\)|0\d{2,3}-)?[1-9]\d{6,7}(\-\d{1,4})?$/;
-RegExps.isMobile = /^((\(\d{2,3}\))|(\d{3}\-))?13\d{9}$/;
+RegExps.isMobile = /^[a-zA-Z]\w{5,17}$/;
 RegExps.isIdCard = /(^\d{15}$)|(^\d{17}[0-9Xx]$)/;
 RegExps.isMoney = /^\d+(\.\d+)?$/;
 RegExps.isZip = /^[1-9]\d{5}$/;

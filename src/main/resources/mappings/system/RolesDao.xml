@@ -20,7 +20,7 @@
 		delete from sys_roles where id = #{id}
 	</delete>
 	
-	<select id="findById" resultType="com.jianfei.pf.entity.system.Roles">
+	<select id="findById" resultType="com.jianfei.pf.entity.system.Roles" resultMap="roleMap">
 		select * from sys_roles where id = #{id}
 	</select>
 	

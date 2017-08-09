@@ -149,7 +149,9 @@ A:hover {
             <td height="20" bgcolor="#FFFFFF"style="width: 3%"><div align="center"><span class="STYLE1">${r.userList}</span></div></td>
             <td height="20" bgcolor="#FFFFFF"style="width: 15%"><div align="center"><span class="STYLE4"><img src="<%=basePath%>static/resource/images/edt.gif" width="16" height="16" />
             <a href="<%=basePath%>system/roles/update/${r.id}">编辑</a>&nbsp; <img src="<%=basePath%>static/resource/images/del.gif" width="16" height="16" />
-            <a href="<%=basePath%>system/roles/delete/${r.id}" class="deleterole">删除</a><input type="hidden" name="rolename" value="${r.rolename}"/></span></div></td>
+            <a href="<%=basePath%>system/roles/delete/${r.id}" class="deleterole">删除</a>
+            <input type="hidden" name="rolename" value="${r.rolename}"/>
+            <input type="hidden" name="users" value="${r.userList}"/></span></div></td>
           </tr>
           </c:forEach>
          </table></td>
@@ -222,9 +224,14 @@ $(function(){
 $(function(){
 	$(".deleterole").click(function(){
 		var name = $(this).next(":hidden").val();
-		var flag = confirm("确定删除："+name);
-		if (flag) {
-			return true;
+		var user = $(this).next(":hidden").next(":hidden").val();
+		if (user != '') {
+			alert("角色已经关联用户,无法删除");
+		}else {
+			var flag = confirm("确定删除："+name);
+			if (flag) {
+				return true;
+			}
 		}
 		return false;
 	});
