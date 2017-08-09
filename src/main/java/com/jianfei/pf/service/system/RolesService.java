@@ -18,4 +18,7 @@ public class RolesService extends CrudService<RolesDao, Roles>{
 	@Autowired
 	private RolesDao rolesDao;
 	
+	public Roles findRolesByRolename(String rolename){
+		return this.rolesDao.findRolesByRolename(rolename);
+	}
 }

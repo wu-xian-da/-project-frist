@@ -39,4 +39,8 @@
 		<if test="rolename != null and rolename != '' ">and r.role_name like CONCAT ('%',#{rolename},'%')</if>
 		ORDER BY r.id asc
 	</select>
+	
+	<select id="findRolesByRolename" resultType="com.jianfei.pf.entity.system.Roles">
+		select * from sys_roles where role_name = #{rolename}
+	</select>
 </mapper>

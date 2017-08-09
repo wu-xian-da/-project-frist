@@ -62,7 +62,13 @@ public class UsersController{
 	}
 	
 	@RequestMapping(value="/update/{id}",method=RequestMethod.POST)
-	public String update(Users users,Model model){
+	public String update(@PathVariable("id") int id,Users users,Model model){
+		Users user = this.usersService.findUsersByNcikname(users.getNickname());
+		if (user != null && user.getId() != id) {
+			this.setModel(model);
+			System.out.println("昵称已存在,请更换!");
+			return "system/users/form";
+		}
 		int result = usersService.update(users);
 		if (result > 0) {
 			System.out.println("更新成功");

@@ -5,10 +5,6 @@
   */
 package com.jianfei.pf.controller.system;
 
-import java.io.UnsupportedEncodingException;
-
-import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -37,6 +33,11 @@ public class RolesController {
 	
 	@RequestMapping(value="/insert",method=RequestMethod.POST)
 	public String insert(Roles roles ,Model model){
+		Roles role = this.rolesService.findRolesByRolename(roles.getRolename());
+		if (role != null) {
+			System.out.println("角色已经存在,请更换!");
+			return "system/roles/form";
+		} 
 		int result = this.rolesService.insert(roles);
 		if (result > 0) {
 			System.out.println("保存角色成功");
@@ -54,6 +55,11 @@ public class RolesController {
 	
 	@RequestMapping(value="/update/{id}",method=RequestMethod.POST)
 	public String update(Roles roles,Model model) {
+		Roles role = this.rolesService.findRolesByRolename(roles.getRolename());
+		if (role != null) {
+			System.out.println("更新的角色名称已经存在,请更换");
+			return "system/roles/form";
+		}
 		int result = rolesService.update(roles);
 		if (result > 0) {
 			System.out.println("更新成功");

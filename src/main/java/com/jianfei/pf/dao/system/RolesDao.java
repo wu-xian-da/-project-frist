@@ -9,5 +9,11 @@ import com.jianfei.pf.base.dao.CrudDao;
 import com.jianfei.pf.entity.system.Roles;
 
 public interface RolesDao extends CrudDao<Roles>{
-
+	
+	/***
+	 * 根据角色名称查询Roles
+	 * @param roles
+	 * @return
+	 */
+	public Roles findRolesByRolename(String rolename);
 }
