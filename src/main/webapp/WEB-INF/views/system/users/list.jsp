@@ -197,7 +197,7 @@ A:hover {
 			</select>条</span></td>
             <td><table border="0" align="right" cellpadding="0" cellspacing="0">
                 <tr>
-			        <c:if test="${!page.first}">
+			       
 					<td width="40">
 					<a href="<%=basePath%>system/users?pn=1&ps=${page.pageSize}${page.urlParams}">
 					<img src="<%=basePath%>static/resource/images/first.gif" width="37" height="15"  />
@@ -205,20 +205,23 @@ A:hover {
 					</td>
 					<td width="45">
 					<a href="<%=basePath%>system/users?pn=${page.pageNo-1}&ps=${page.pageSize}${page.urlParams}">
-					<img src="<%=basePath%>static/resource/images/back.gif" width="43" height="15" />
+					<input id="pagePnShang" type="hidden" name="pn" value="${page.pageNo-1}"/>
+					<img src="<%=basePath%>static/resource/images/back.gif" width="43" height="15" id="shangyiye"/>
 					</a>
 					</td>
-					</c:if>
+				
 					<td>
 					<c:forEach begin="${page.viewStartPage}" end="${page.viewEndPage}" step="1" var="pageIndex">
 						<a <c:if test="${page.pageNo == pageIndex}">class="active"</c:if>
 						href="<%=basePath%>system/users?pn=${pageIndex}&ps=${page.pageSize}${page.urlParams}">${pageIndex}</a>
 					</c:forEach>
 					</td>
-					<c:if test="${!page.last}">
+					
 					<td width="45">
 					<a href="<%=basePath%>system/users?pn=${page.pageNo+1}&ps=${page.pageSize}${page.urlParams}">
-					<img src="<%=basePath%>static/resource/images/next.gif" width="43" height="15"  />
+					<input id="pagePnXia" type="hidden" name="pn" value="${page.pageNo+1}"/>
+					<input id="totalPage" type="hidden" name="pn" value="${page.totalPage+1}"/>
+					<img id="xiayiye" src="<%=basePath%>static/resource/images/next.gif" width="43" height="15"  />
 					</a>
 					</td>
 					<td width="40">
@@ -226,7 +229,7 @@ A:hover {
 					<img src="<%=basePath%>static/resource/images/last.gif" width="37" height="15" />
 					</a>
 					</td>
-					</c:if>
+					
                 </tr>
             </table></td>
           </tr>
@@ -239,21 +242,13 @@ A:hover {
 </body>
 <script type="text/javascript" src="<%=basePath%>static/resource/js/jquery.min.js"></script>
 <script type="text/javascript" src="<%=basePath%>static/resource/js/jquery-2.0.0.js"></script>
+<script type="text/javascript" src="<%=basePath%>static/resource/js/validate-1708.js"></script>
 <script type="text/javascript">
-$(function(){
-	$("#_page_ps_select").change(function(){
-		window.location.href = '<%=basePath%>system/users?pn=${page.pageNo}${page.urlParams}&ps='+$(this).val();
+	//页面跳转
+	$(function(){
+		$("#_page_ps_select").change(function(){
+			window.location.href = '<%=basePath%>system/users?pn=${page.pageNo}${page.urlParams}&ps='+$(this).val();
+		});
 	});
-});
-$(function(){
-	$(".deleteuser").click(function(){
-		var name = $(this).next(":hidden").val();
-		var flag = confirm("确定删除："+name);
-		if (flag) {
-			return true;
-		}
-		return false;
-	});
-});
 </script>
 </html>

@@ -1,3 +1,19 @@
+/******************************************************************
+--------------------------USER-------------------------------------
+*******************************************************************/
+
+//user删除提示
+$(function(){
+	$(".deleteuser").click(function(){
+		var name = $(this).next(":hidden").val();
+		var flag = confirm("确定删除："+name);
+		if (flag) {
+			return true;
+		}
+		return false;
+	});
+});
+
 //年龄验证
 $(function(){
 	$("#usersubmit").click(function(){
@@ -49,6 +65,10 @@ $(function(){
 	});
 });
 
+
+/******************************************************************
+--------------------------ROLE-------------------------------------
+*******************************************************************/
 $(function(){
 	$("#rolesumbit").click(function(){
 		var rolename = $("#rolerolename").val();
@@ -62,4 +82,45 @@ $(function(){
 		}
 	});
 });
+//roel 删除
+$(function(){
+	$(".deleterole").click(function(){
+		var name = $(this).next(":hidden").val();
+		var user = $(this).next(":hidden").next(":hidden").val();
+		if (user != '') {
+			alert("角色已经关联用户,无法删除");
+		}else {
+			var flag = confirm("确定删除："+name);
+			if (flag) {
+				return true;
+			}
+		}
+		return false;
+	});
+});
 
+
+/*********************************************************************
+						公共部分
+ *********************************************************************/
+//上一页按钮限制
+$(function(){
+	$("#shangyiye").click(function(){
+		var pns = $("#pagePnShang").val();
+		if (pns<=0) {
+			return false;
+		}
+		return true;
+	});
+});
+//下一页按钮限制
+$(function(){
+	$("#xiayiye").click(function(){
+		var total = $("#totalPage").val();
+		var pnx = $("#pagePnXia").val();
+		if (pnx>=total) {
+			return false;
+		}
+		return true;
+	});
+});

@@ -55,7 +55,9 @@ public class RolesController {
 	
 	@RequestMapping(value="/update/{id}",method=RequestMethod.POST)
 	public String update(@PathVariable("id") int id,Roles roles,Model model) {
+		System.out.println(roles.getRolename());
 		Roles role = this.rolesService.findRolesByRolename(roles.getRolename());
+		System.out.println(role);
 		if (role != null && role.getId() != id) {
 			System.out.println("更新的角色名称已经存在,请更换");
 			return "system/roles/form";
