@@ -5,9 +5,11 @@
   */
 package com.jianfei.pf.controller;
 
+import java.io.IOException;
 import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -38,20 +40,26 @@ public class LoginController {
 	}
 	
 	@PostMapping("/login")
-	public String loginUsers(Model model,Users users,HttpServletRequest request){
+	public String loginUsers(Model model,Users users,HttpServletRequest request,HttpServletResponse response) throws IOException{
 		Users user = usersService.findUsersByNcikname(users.getNickname());
 		if (user != null) {
 			if (users.getNickname().equals(user.getNickname()) && users.getPassword().equals(user.getPassword())) {
 				user.setLoginTime(new Date());
 				user.setIp(HttpUtils.getRemoteAddr(request));
 				usersService.updateLoginTimeAndIp(user);
-				model.addAttribute("users",user.getUsername());
 				System.out.println("登录成功");
+				return "system/main";
+			} else if (users.getNickname().equals(user.getNickname()) && !users.getPassword().equals(user.getPassword())){
+				response.sendRedirect("http://localhost:8080/system?error2=password");
+				return "system/login";
+			} else {
+				response.sendRedirect("http://localhost:8080/system?error1=nickname");
+				return "system/login";
 			}
 		}else {
 			System.out.println("登录失败");
-			return "error/error";
+			response.sendRedirect("http://localhost:8080/system?error3=fail");
+			return "system/login";
 		}
-		return "system/main";
 	}
 }

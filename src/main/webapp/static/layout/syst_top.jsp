@@ -120,14 +120,14 @@ a {
 														<table width="100%" border="0" cellspacing="0"
 															cellpadding="0">
 															<tr>
-																<td width="26">
+																<td width="50">
 																	<div align="center">
 																		<img src="http://localhost:8080/static/resource/images/main_21.gif"
 																			width="26" height="19">
 																	</div>
 																</td>
-																<td width="50">
-																	<div align="center">
+																<td width="200">
+																	<div align="left">
 																		<a href="http://localhost:8080/system" target="_parent"><img
 																				src="http://localhost:8080/static/resource/images/main_20.gif"
 																				width="48" height="19">
@@ -140,7 +140,7 @@ a {
 															</tr>
 														</table>
 													</td>
-													<td width="220" valign="bottom" nowrap="nowrap">
+													<td width="230" valign="bottom" nowrap="nowrap">
 														<div align="right">
 															<span class="STYLE1"><span class="STYLE2">■</span>
 															<input disabled="disabled" name=thetime
@@ -192,8 +192,7 @@ a {
 					background="http://localhost:8080/static/resource/images/main_36.gif">
 					<table width="100%" border="0" cellspacing="0" cellpadding="0">
 						<tr>
-							<td width="177" height="28"
-								background="http://localhost:8080/static/resource/images/main_32.gif">
+							<td width="177" height="28"background="http://localhost:8080/static/resource/images/main_32.gif">
 								<table width="100%" border="0" cellspacing="0" cellpadding="0">
 									<tr>
 										<td width="20%" height="22">
@@ -201,6 +200,7 @@ a {
 										</td>
 										<td width="59%" valign="bottom">
 											<div align="center" class="STYLE1">
+											<!-- 当前用户: -->
 											</div>
 										</td>
 										<td width="21%">
@@ -209,150 +209,32 @@ a {
 									</tr>
 								</table>
 							</td>
-							<td>
-								<table width="100%" border="0" cellspacing="0" cellpadding="0">
+							<td width="505px" height="28" >
+							<img src="http://localhost:8080/static/resource/images/main_36.gif" width="505px" height="28">
+							</td>
+							<!-- <td width="3">
+								<img src="http://localhost:8080/static/resource/images/main_36.gif"
+									width="3" height="28">
+							</td> -->
+							<td width="63">
+								<table width="58" border="0" align="center" cellpadding="0"
+									cellspacing="0">
 									<tr>
-										<td width="65" height="28">
-											<table width="100%" border="0" cellspacing="0"
-												cellpadding="0">
-												<tr>
-													<td height="23" valign="bottom">
-														<table width="58" border="0" align="center"
-															cellpadding="0" cellspacing="0">
-															<tr>
-																<td height="20" style="cursor: hand"
-																	onMouseOver="this.style.backgroundImage='url(http://localhost:8080/static/resource/images/bg.gif)';this.style.borderStyle='solid';this.style.borderWidth='1';borderColor='#a6d0e7'; "
-																	onmouseout="this.style.backgroundImage='url()';this.style.borderStyle='none'">
-																	
-																</td>
-															</tr>
-														</table>
-													</td>
-												</tr>
-											</table>
-										</td>
-										<td width="3">
-											<img src="http://localhost:8080/static/resource/images/main_36.gif"
-												width="3" height="28">
-										</td>
-										<td width="63">
-											<table width="58" border="0" align="center" cellpadding="0"
-												cellspacing="0">
-												<tr      >
-													<td height="20" style="cursor: hand"
-														onMouseOver="this.style.backgroundImage='url(http://localhost:8080/static/resource/images/bg.gif)';this.style.borderStyle='solid';this.style.borderWidth='1';borderColor='#a6d0e7'; "
-														onmouseout="this.style.backgroundImage='url()';this.style.borderStyle='none'">
-														
-													</td>
-												</tr>
-											</table>
-										</td>
-										<td width="3">
-											<img src="http://localhost:8080/static/resource/images/main_36.gif"
-												width="3" height="28">
-										</td>
-										<td width="63">
-											<table width="58" border="0" align="center" cellpadding="0"
-												cellspacing="0">
-												<tr>
-													<td height="20" style="cursor: hand"
-														onMouseOver="this.style.backgroundImage='url(http://localhost:8080/static/resource/images/bg.gif)';this.style.borderStyle='solid';this.style.borderWidth='1';borderColor='#a6d0e7'; "
-														onmouseout="this.style.backgroundImage='url()';this.style.borderStyle='none'">
-														
-													</td>
-												</tr>
-											</table>
-										</td>
-										<td width="3">
-											<img src="http://localhost:8080/static/resource/images/main_36.gif"
-												width="3" height="28">
-										</td>
-										<td width="63">
-											<table width="58" border="0" align="center" cellpadding="0"
-												cellspacing="0">
-												<tr>
-													<td height="20" style="cursor: hand"
-														onMouseOver="this.style.backgroundImage='url(http://localhost:8080/static/resource/images/bg.gif)';this.style.borderStyle='solid';this.style.borderWidth='1';borderColor='#a6d0e7'; "
-														onmouseout="this.style.backgroundImage='url()';this.style.borderStyle='none'">
-														
-													</td>
-												</tr>
-											</table>
-										</td>
-										<td width="3">
-											<img src="http://localhost:8080/static/resource/images/main_36.gif"
-												width="3" height="28">
-										</td>
-										<td width="63">
-											<table width="58" border="0" align="center" cellpadding="0"
-												cellspacing="0">
-												<tr>
-													<td height="20" style="cursor: hand"
-														onMouseOver="this.style.backgroundImage='url(http://localhost:8080/static/resource/images/bg.gif)';this.style.borderStyle='solid';this.style.borderWidth='1';borderColor='#a6d0e7'; "
-														onmouseout="this.style.backgroundImage='url()';this.style.borderStyle='none'">
-														
-													</td>
-												</tr>
-											</table>
-										</td>
-										<td width="3">
-											<img src="http://localhost:8080/static/resource/images/main_36.gif"
-												width="3" height="28">
-										</td>
-										<td width="63">
-											<table width="58" border="0" align="center" cellpadding="0"
-												cellspacing="0">
-												<tr>
-													<td height="20" style="cursor: hand"
-														onMouseOver="this.style.backgroundImage='url(http://localhost:8080/static/resource/images/bg.gif)';this.style.borderStyle='solid';this.style.borderWidth='1';borderColor='#a6d0e7'; "
-														onmouseout="this.style.backgroundImage='url()';this.style.borderStyle='none'">
-														
-													</td>
-												</tr>
-											</table>
-										</td>
-										<td width="3">
-											<img src="http://localhost:8080/static/resource/images/main_36.gif"
-												width="3" height="28">
-										</td>
-										<td width="63">
-											<table width="58" border="0" align="center" cellpadding="0"
-												cellspacing="0">
-												<tr>
-													<td height="20" style="cursor: hand"
-														onMouseOver="this.style.backgroundImage='url(http://localhost:8080/static/resource/images/bg.gif)';this.style.borderStyle='solid';this.style.borderWidth='1';borderColor='#a6d0e7'; "
-														onmouseout="this.style.backgroundImage='url()';this.style.borderStyle='none'">
-														
-													</td>
-												</tr>
-											</table>
-										</td>
-										<td width="3">
-											<img src="http://localhost:8080/static/resource/images/main_36.gif"
-												width="3" height="28">
-										</td>
-										<td width="63">
-											<table width="58" border="0" align="center" cellpadding="0"
-												cellspacing="0">
-												<tr>
-													
-												</tr>
-											</table>
-										</td>
 										
-										
-										<td>
-											&nbsp;
-										</td>
 									</tr>
 								</table>
 							</td>
-							<td width="21">
-								<img src="http://localhost:8080/static/resource/images/main_37.gif" width="21"
-									height="28">
+										
+										
+							<td>
+								&nbsp;
 							</td>
 						</tr>
 					</table>
+				</td>
+				<td width="21">
+					<img src="http://localhost:8080/static/resource/images/main_37.gif" width="21px"
+						height="28">
 				</td>
 			</tr>
 		</table>

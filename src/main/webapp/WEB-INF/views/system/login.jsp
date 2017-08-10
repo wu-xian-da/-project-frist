@@ -17,9 +17,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="description" content="This is my page">
 <script type="text/javascript" src="<%=basePath%>resource/js/CheckForm.js"></script>
 <script type="text/javascript">
-	var errori ='<%=request.getParameter("error")%>'
-	if(errori=='yes'){
-		alert("用户或密码错误！请重新输入！");
+	var errori ='<%=request.getParameter("error1")%>'
+	if(errori=='nickname'){
+		alert("昵称错误！请重新输入！");
+	}
+	var errori ='<%=request.getParameter("error2")%>'
+	if(errori=='password'){
+		alert("密码错误！请重新输入！");
+	}
+	var errori ='<%=request.getParameter("error3")%>'
+	if(errori=='fail'){
+		alert("登录失败！请重新输入！");
 	}
 </script>
 <style type="text/css">
@@ -37,7 +45,7 @@ body {
 	font-size: 12px;
 }
 #in1{
-	background-image: url('<%=basePath%>resource/images/dl.gif');
+	background-image: url('<%=basePath%>static/resource/images/dl.gif');
 	height:18px;
 	width:49px;
 	border: 0px;
@@ -72,8 +80,8 @@ body {
       <tr>
         <td height="53"><table width="100%" border="0" cellspacing="0" cellpadding="0">
           <tr>
-            <td width="394" height="53" background="<%=basePath%>resource/images/login_05.gif">&nbsp;</td>
-            <td width="206" background="<%=basePath%>resource/images/login_06.gif"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+            <td width="394" height="53" background="<%=basePath%>static/resource/images/login_05.gif">&nbsp;</td>
+            <td width="206" background="<%=basePath%>static/resource/images/login_06.gif"><table width="100%" border="0" cellspacing="0" cellpadding="0">
               <tr>
                 <td width="16%" height="25"><div align="right"><span class="STYLE1">昵称</span></div></td>
                 <td width="57%" height="25"><div align="center">
@@ -89,12 +97,12 @@ body {
                 <td height="25"><div align="left"><input type="submit" id="in1" value=""/></div></td>
               </tr>
             </table></td>
-            <td width="362" background="<%=basePath%>resource/images/login_07.gif">&nbsp;</td>
+            <td width="362" background="<%=basePath%>static/resource/images/login_07.gif">&nbsp;</td>
           </tr>
         </table></td>
       </tr>
       <tr>
-        <td height="213" background="<%=basePath%>resource/images/login_08.gif">
+        <td height="213" background="<%=basePath%>static/resource/images/login_08.gif">
 		</td>
       </tr>
     </table></td>
