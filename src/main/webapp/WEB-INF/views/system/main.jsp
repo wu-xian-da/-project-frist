@@ -31,6 +31,5 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<frame src="<%=basePath%>static/layout/sys_left.jsp"   noresize="noresize" />
 		<frame src="<%=basePath%>static/layout/bg.jsp"  name="mainFrame" class="bg-welcome" />
 	</frameset>
-		<frame src="<%=basePath%>view/frame/down.jsp" name="bottomFrame" scrolling="No" noresize="noresize" id="bottomFrame" />
 </frameset>
 </html>
