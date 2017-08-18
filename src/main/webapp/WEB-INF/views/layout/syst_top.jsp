@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
@@ -72,7 +74,7 @@ function exit(){
 -->
 </style>
 </head>
-<body onload=startclock()>
+<body onload=startclock() >
 	<form name=clock>
 		<table width="100%" border="0" cellspacing="0" cellpadding="0">
 			<tr>
@@ -137,7 +139,7 @@ function exit(){
 																</td> -->
 																<td width="50">
 																	<div align="center">
-																		<a href="http://localhost:8080/system" target="_parent"><img
+																		<a href="http://localhost:8080/" target="_parent"><img
 																				src="http://localhost:8080/static/resource/images/main_20.gif"
 																				width="48" height="19">
 																		</a>
@@ -215,7 +217,8 @@ function exit(){
 										</td>
 										<td width="59%" valign="bottom">
 											<div align="center" class="STYLE1">
-												<!-- 当前用户：--></div>
+												当前用户：<%=request.getSession().getAttribute("username") %>
+											</div>
 										</td>
 										<td width="21%">
 											&nbsp;

@@ -62,4 +62,32 @@
         <servlet-name>default</servlet-name>  
         <url-pattern>/static/*</url-pattern>  
     </servlet-mapping>
+    
+    <!-- 左侧导航静态资源访问 -->
+    <servlet>
+   		<servlet-name>gotoleft</servlet-name>
+  		<jsp-file>/WEB-INF/views/layout/sys_left.jsp</jsp-file>
+ 	</servlet>
+ 	<servlet-mapping>
+   		<servlet-name>gotoleft</servlet-name>
+   		<url-pattern>/sys_left</url-pattern>
+  	</servlet-mapping>
+  	 <!-- 主体静态资源访问 -->
+  	<servlet>
+   		<servlet-name>gotobg</servlet-name>
+  		<jsp-file>/WEB-INF/views/layout/bg.jsp</jsp-file>
+ 	</servlet>
+ 	<servlet-mapping>
+   		<servlet-name>gotobg</servlet-name>
+   		<url-pattern>/bg</url-pattern>
+  	</servlet-mapping>
+  	 <!-- 顶部导航静态资源访问 -->
+  	<servlet>
+   		<servlet-name>gototop</servlet-name>
+  		<jsp-file>/WEB-INF/views/layout/syst_top.jsp</jsp-file>
+ 	</servlet>
+ 	<servlet-mapping>
+   		<servlet-name>gototop</servlet-name>
+   		<url-pattern>/syst_top</url-pattern>
+  	</servlet-mapping>
 </web-app>

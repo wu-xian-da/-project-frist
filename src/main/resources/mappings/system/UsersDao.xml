@@ -16,16 +16,16 @@
 	</sql>
 	
 	<insert id="insert" useGeneratedKeys="true" keyProperty="id">
-		insert into sys_users (username,password,nickname,role_id,gender,age,create_time)
+		insert into system_users (username,password,nickname,role_id,gender,age,create_time)
 		values (#{username},#{password},#{nickname},#{role.id},#{gender},#{age},#{createTime})
 	</insert>
 	
 	<update id="updateLoginTimeAndIp">
-		update sys_users a set a.login_time = #{loginTime},a.ip = #{ip} where a.id = #{id}
+		update system_users a set a.login_time = #{loginTime},a.ip = #{ip} where a.id = #{id}
 	</update>
 	
 	<update id="update">
-		update sys_users set 
+		update system_users set 
 		username = #{username},
 		password = #{password},
 		nickname = #{nickname},
@@ -36,29 +36,29 @@
 	</update>
 	
 	<delete id="delete">
-		delete from sys_users where id = #{id}
+		delete from system_users where id = #{id}
 	</delete>
 	
 	<select id="findAll">
 		SELECT <include refid="userColumns"></include>
-		FROM sys_users a LEFT JOIN sys_roles r ON a.role_id=r.id
+		FROM system_users a LEFT JOIN sys_roles r ON a.role_id=r.id
 		ORDER BY a.id asc
 	</select>
 	
 	<select id="findById" resultType="com.jianfei.pf.entity.system.Users" parameterType="java.lang.Integer">
 		SELECT <include refid="userColumns"></include>
-		FROM sys_users a WHERE a.id = #{id}
+		FROM system_users a WHERE a.id = #{id}
 	</select>
 	
 	<select id="findUsersByNickname" resultType="com.jianfei.pf.entity.system.Users" >
 		SELECT <include refid="userColumns"></include>
-		FROM sys_users a WHERE a.nickname = #{nickname}
+		FROM system_users a WHERE a.nickname = #{nickname}
 	</select>
 	
 	<select id="findPage" resultType="com.jianfei.pf.entity.system.Users">
 		select <include refid="userColumns" />,
 		r.role_name AS "role.rolename"
-	    from sys_users a
+	    from system_users a
 	    LEFT JOIN sys_roles r ON a.role_id=r.id
 	    where 1=1
     	<if test="null != username and '' != username">and a.username like CONCAT('%',#{username},'%')</if>

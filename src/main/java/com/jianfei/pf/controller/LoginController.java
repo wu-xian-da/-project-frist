@@ -23,7 +23,7 @@ import com.jianfei.pf.service.system.UsersService;
 import com.jianfei.pf.utils.http.HttpUtils;
 
 @Controller
-@RequestMapping(value="/system")
+@RequestMapping(value="/")
 public class LoginController {
 	
 	@Autowired
@@ -31,12 +31,12 @@ public class LoginController {
 	
 	@RequestMapping
 	public String loginPage(){
-		return "system/login";
+		return "login";
 	}
 	
 	@GetMapping("/login")
 	public String loginForm(Model model){
-		return "system/login";
+		return "login";
 	}
 	
 	@PostMapping("/login")
@@ -47,19 +47,21 @@ public class LoginController {
 				user.setLoginTime(new Date());
 				user.setIp(HttpUtils.getRemoteAddr(request));
 				usersService.updateLoginTimeAndIp(user);
+				
+				request.getSession().setAttribute("username", user.getUsername());
 				System.out.println("登录成功");
-				return "system/main";
+				return "layout/main";
 			} else if (users.getNickname().equals(user.getNickname()) && !users.getPassword().equals(user.getPassword())){
 				response.sendRedirect("http://localhost:8080/system?error2=password");
-				return "system/login";
+				return "login";
 			} else {
 				response.sendRedirect("http://localhost:8080/system?error1=nickname");
-				return "system/login";
+				return "login";
 			}
 		}else {
 			System.out.println("登录失败");
 			response.sendRedirect("http://localhost:8080/system?error3=fail");
-			return "system/login";
+			return "login";
 		}
 	}
 }
