@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jianfei.pf.dao.system.MenusDao">
+	
+	<sql id="menuColumns">
+		a.id,
+		a.name,
+		a.href,
+		a.permission,
+		a.type,
+		a.sort,
+		a.icon,
+		a.parent_id AS "parent.id"
+	</sql>
+	
+	<resultMap type="com.jianfei.pf.entity.system.Menus" id="menuMap">
+		<id property="id" column="id"/>
+		<result property="name" column="name"/>
+		<collection property="childs" ofType="com.jianfei.pf.entity.system.Menus" column="id" select="findMenuChild">
+		</collection>
+	</resultMap>
+	
+	<insert id="insert">
+		insert into system_menus (name,href,permission,type,sort) values (#{name},#{href},#{permission},#{type},#{sort})
+	</insert>
+	
+	<update id="update">
+		update system_menus set 
+		name = #{name},
+		href = #{href},
+		permission = #{permission},
+		type = #{type},
+		sort = #{sort}
+		where id = #{id}
+	</update>
+	
+	<delete id="delete">
+		delete from system_menus where id = #{id}
+	</delete>
+
+	<select id="findMenusByPermission" resultType="com.jianfei.pf.entity.system.Menus">
+		select * from system_menus m where m.permission = #{permission}
+	</select>
+	
+	<select id="findById" resultType="com.jianfei.pf.entity.system.Menus" parameterType="java.lang.Integer">
+		SELECT *
+		FROM system_menus a WHERE a.id = #{id}
+	</select>
+
+	<select id="findPage" resultType="com.jianfei.pf.entity.system.Menus">
+		select * from system_menus m
+	    where 1=1
+    	<if test="null != name and '' != name">and m.name like CONCAT('%',#{name},'%')</if>
+	    <if test="null != permission and '' != permission">and m.permission like CONCAT('%',#{permission},'%') </if>
+        <if test="null != type">and m.type = #{type}</if>
+    	order by m.id asc , m.sort asc
+	</select>
+	
+	<select id="findMenuForRole" resultMap="menuMap">
+		SELECT a.id, a.name
+		FROM system_menus a
+		WHERE a.parent_id=-1 
+		ORDER BY a.sort
+	</select>
+	
+	<select id="findMenuChild" resultMap="menuMap">
+		SELECT id, name
+		FROM system_menus
+		WHERE parent_id=#{id}
+		ORDER BY sort
+ 	</select>
+</mapper>

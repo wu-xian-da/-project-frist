@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.jianfei.pf.entity.system.Roles;
+import com.jianfei.pf.service.system.MenusService;
 import com.jianfei.pf.service.system.RolesService;
 
 @Controller
@@ -22,12 +23,17 @@ public class RolesController {
 	@Autowired
 	private RolesService rolesService;
 	
+	@Autowired
+	private MenusService menusService;
+	
 	private void setModel (Model model) {
+		
 		model.addAttribute("roles",rolesService.findAll());
 	}
 	
 	@RequestMapping(value="/insert",method=RequestMethod.GET)
 	public String Forminsert(Model model){
+		model.addAttribute("menus", this.menusService.findMenuForRole());
 		return "system/roles/form";
 	}
 	

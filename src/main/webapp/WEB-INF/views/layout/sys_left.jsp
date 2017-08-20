@@ -166,6 +166,28 @@ document.write("<div id=tt style=height:"+he+";overflow:hidden>")
 																	</table>
 																</td>
 															</tr>
+															<tr>
+																<td height="23">
+																	<div align="center">
+																		<img src="http://localhost:8080/static/resource/images/left.gif"
+																			width="10" height="10" />
+																	</div>
+																</td>
+																<td height="23"   >
+																	<table width="95%" border="0" cellspacing="0"
+																		cellpadding="0">
+																		<tr  >
+																			<td height="20" style="cursor: hand"
+																				onmouseover="this.style.borderStyle='solid';this.style.borderWidth='1';borderColor='#7bc4d3'; "
+																				onmouseout="this.style.borderStyle='none'">
+																				<span class="STYLE3"> <a
+																					href="http://localhost:8080/system/menus"
+																					target="mainFrame">权限管理</a> </span>
+																			</td>
+																		</tr>
+																	</table>
+																</td>
+															</tr>
 														</table>
 													</td>
 												</tr>

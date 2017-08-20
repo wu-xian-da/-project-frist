@@ -94,7 +94,7 @@ A:hover {
 </script>
 <script type="text/javascript">
 	function add(){  
-			window.location="<%=basePath%>system/users/insert";
+			window.location="<%=basePath%>system/menus/insert";
 		}
 
 </script>
@@ -114,19 +114,16 @@ A:hover {
 		        <table width="100%" border="0" cellspacing="0" cellpadding="0">
 		          <tr>
 		          	<td class="STYLE4" align="left" width="100px">条件检索</td>
-		            <td class="STYLE4" align="left" width="150px">姓名：<input type="text" name="username" style="width: 50px"/></td>
-		            <td class="STYLE4" align="left" width="150px">昵称：<input type="text" name="nickname" style="width: 50px"/></td>
-		            <td class="STYLE4" align="left" width="200px">性别：
-		            	<select name="gender" >
-		            		 <option value="">全部(单选)</option>
-							<c:forEach items="${gender}" var="sex">
-								<option value="${sex}" <c:if test="${page.entity.gender eq sex }">selected="selected"</c:if>>${sex.name}</option>
+		            <td class="STYLE4" align="left" width="250px">名称：<input type="text" name="name" style="width: 150px"/></td>
+		            <td class="STYLE4" align="left" width="250px">权限标识：<input type="text" name="permission" style="width: 150px"/></td>
+		            <td class="STYLE4" align="left" width="300px">类型：
+		            	<select name="type" >
+		            		<option value="">全部(单选)</option>
+							<c:forEach items="${type}" var="t">
+								<option value="${t}" <c:if test="${page.entity.type eq t }">selected="selected"</c:if>>${t.name}</option>
 							</c:forEach>
 						</select>
 					</td>
-		            <td class="STYLE4" align="right" width="200px">检索时间：<input type="text" name="beginCreateTime" style="width: 100px" class="sang_Calender"/><script type="text/javascript" src="<%=basePath%>static/resource/js/datetime.js"></script></td>
-		            <td class="STYLE4" align="left" width="2px">至</td>
-		            <td class="STYLE4" align="left"><input type="text" name="endCreateTime" style="width: 100px" class="sang_Calender"/><script type="text/javascript" src="<%=basePath%>static/resource/js/datetime.js"></script></td>
 		            <td class="STYLE4" align="right">&nbsp;&nbsp;<input  type="submit" value="查询" style="width:50px"/></td>
 		            <td class="STYLE4" align="right">&nbsp;&nbsp;<input  type="button" value="添加"  onclick="add()"  style="width:50px"/></td>            
 		          </tr>
@@ -149,33 +146,25 @@ A:hover {
         <td width="8" background="<%=basePath%>static/resource/images/tab_12.gif">&nbsp;</td>
         <td><table width="100%" border="0" cellpadding="0" cellspacing="1" bgcolor="b5d6e6" onmouseover="changeto()"  onmouseout="changeback()">
           <tr>
-            <td width="3%" height="22" background="<%=basePath%>static/resource/images/bg2.gif" bgcolor="#FFFFFF"><div align="center"><span class="STYLE1">序号</span></div></td>
-            <td width="8%" height="22" background="<%=basePath%>static/resource/images/bg2.gif" bgcolor="#FFFFFF"><div align="center"><span class="STYLE1">姓名</span></div></td>
-            <td width="8%" height="22" background="<%=basePath%>static/resource/images/bg2.gif" bgcolor="#FFFFFF"><div align="center"><span class="STYLE1">密码</span></div></td>
-            <td width="8%" height="22" background="<%=basePath%>static/resource/images/bg2.gif" bgcolor="#FFFFFF"><div align="center"><span class="STYLE1">昵称</span></div></td>		
-            <td width="7%" height="22" background="<%=basePath%>static/resource/images/bg2.gif" bgcolor="#FFFFFF"><div align="center"><span class="STYLE1">归属角色</span></div></td>		
-			<td width="2%" height="22" background="<%=basePath%>static/resource/images/bg2.gif" bgcolor="#FFFFFF"><div align="center"><span class="STYLE1">性别</span></div></td>
-			<td width="3%" height="22" background="<%=basePath%>static/resource/images/bg2.gif" bgcolor="#FFFFFF"><div align="center"><span class="STYLE1">年龄</span></div></td>
-			<td width="7.5%" height="22" background="<%=basePath%>static/resource/images/bg2.gif" bgcolor="#FFFFFF"><div align="center"><span class="STYLE1">创建时间</span></div></td>	
-			<td width="7.5%" height="22" background="<%=basePath%>static/resource/images/bg2.gif" bgcolor="#FFFFFF"><div align="center"><span class="STYLE1">登录时间</span></div></td>	
-			<td width="6%" height="22" background="<%=basePath%>static/resource/images/bg2.gif" bgcolor="#FFFFFF"><div align="center"><span class="STYLE1">IP</span></div></td>
-			<td width="15%" height="22" background="<%=basePath%>static/resource/images/bg2.gif" bgcolor="#FFFFFF" class="STYLE1"><div align="center">基本操作</div></td>
+            <td width="50px" height="22" background="<%=basePath%>static/resource/images/bg2.gif" bgcolor="#FFFFFF"><div align="center"><span class="STYLE1">序号</span></div></td>
+            <td width="200px" height="22" background="<%=basePath%>static/resource/images/bg2.gif" bgcolor="#FFFFFF"><div align="center"><span class="STYLE1">名称</span></div></td>
+            <td width="200px" height="22" background="<%=basePath%>static/resource/images/bg2.gif" bgcolor="#FFFFFF"><div align="center"><span class="STYLE1">链接</span></div></td>
+            <td width="200px" height="22" background="<%=basePath%>static/resource/images/bg2.gif" bgcolor="#FFFFFF"><div align="center"><span class="STYLE1">权限标识</span></div></td>		
+            <td width="150px" height="22" background="<%=basePath%>static/resource/images/bg2.gif" bgcolor="#FFFFFF"><div align="center"><span class="STYLE1">类型</span></div></td>		
+			<td width="150px" height="22" background="<%=basePath%>static/resource/images/bg2.gif" bgcolor="#FFFFFF"><div align="center"><span class="STYLE1">排序号</span></div></td>
+			<td width="100px" height="22" background="<%=basePath%>static/resource/images/bg2.gif" bgcolor="#FFFFFF" class="STYLE1"><div align="center">基本操作</div></td>
 		</tr>
-		<c:forEach items="${page.data}" var="u">
+		<c:forEach items="${page.data}" var="p">
  		<tr>
-            <td height="20" bgcolor="#FFFFFF"style="width: 3%"><div align="center"><span class="STYLE1">${u.id}</span></div></td>
-            <td height="20" bgcolor="#FFFFFF"style="width: 3%"><div align="center"><span class="STYLE1">${u.username}</span></div></td>
-            <td height="20" bgcolor="#FFFFFF"style="width: 3%"><div align="center"><span class="STYLE1">${u.password}</span></div></td>
-            <td height="20" bgcolor="#FFFFFF"style="width: 6%"><div align="center"><span class="STYLE1">${u.nickname}</span></div></td>
-            <td height="20" bgcolor="#FFFFFF"style="width: 6%"><div align="center"><span class="STYLE1">${u.role.rolename}</span></div></td>
-			<td height="20" bgcolor="#FFFFFF"style="width: 3%"><div align="center"><span class="STYLE1">${u.gender.name}</span></div></td>
-            <td height="20" bgcolor="#FFFFFF"style="width: 3%"><div align="center"><span class="STYLE1">${u.age}</span></div></td>
-            <td height="20" bgcolor="#FFFFFF"style="width: 5%"><div align="center"><span class="STYLE1"><fmt:formatDate value="${u.createTime}" pattern="yyyy-MM-dd HH:mm" type="date" /></span></div></td>
-			<td height="20" bgcolor="#FFFFFF"style="width: 3%"><div align="center"><span class="STYLE1"><fmt:formatDate value="${u.loginTime}" pattern="yyyy-MM-dd HH:mm" type="date" /></span></div></td>
-            <td height="20" bgcolor="#FFFFFF"style="width: 5%"><div align="center"><span class="STYLE1">${u.ip}</span></div></td>
-            <td height="20" bgcolor="#FFFFFF"style="width: 15%"><div align="center"><span class="STYLE4"><img src="<%=basePath%>static/resource/images/edt.gif" width="16" height="16" />
-            <a href="${pageContext.request.contextPath}/system/users/update/${u.id}">编辑</a>&nbsp; <img src="<%=basePath%>static/resource/images/del.gif" width="16" height="16" />
-            <a href="${pageContext.request.contextPath}/system/users/delete/${u.id}" class="deleteuser">删除</a><input type="hidden" name="username" value="${u.username }" /></span></div></td>
+            <td height="20" bgcolor="#FFFFFF"><div align="center"><span class="STYLE1">${p.id}</span></div></td>
+            <td height="20" bgcolor="#FFFFFF"><div align="center"><span class="STYLE1">${p.name}</span></div></td>
+            <td height="20" bgcolor="#FFFFFF"><div align="center"><span class="STYLE1">${p.href}</span></div></td>
+            <td height="20" bgcolor="#FFFFFF"><div align="center"><span class="STYLE1">${p.permission}</span></div></td>
+            <td height="20" bgcolor="#FFFFFF"><div align="center"><span class="STYLE1">${p.type.name}</span></div></td>
+			<td height="20" bgcolor="#FFFFFF"><div align="center"><span class="STYLE1">${p.sort}</span></div></td>
+            <td height="20" bgcolor="#FFFFFF"><div align="center"><span class="STYLE4"><img src="<%=basePath%>static/resource/images/edt.gif" width="16" height="16" />
+            <a href="${pageContext.request.contextPath}/system/menus/update/${p.id}">编辑</a>&nbsp; <img src="<%=basePath%>static/resource/images/del.gif" width="16" height="16" />
+            <a href="${pageContext.request.contextPath}/system/menus/delete/${p.id}" class="deleteuser">删除</a><input type="hidden" name="username" value="${p.name }" /></span></div></td>
           </tr>
           </c:forEach>
          </table></td>
@@ -199,12 +188,12 @@ A:hover {
                 <tr>
 			       
 					<td width="40">
-					<a href="<%=basePath%>system/users?pn=1&ps=${page.pageSize}${page.urlParams}">
+					<a href="<%=basePath%>system/menus?pn=1&ps=${page.pageSize}${page.urlParams}">
 					<img src="<%=basePath%>static/resource/images/first.gif" width="37" height="15"  />
 					</a>
 					</td>
 					<td width="45">
-					<a href="<%=basePath%>system/users?pn=${page.pageNo-1}&ps=${page.pageSize}${page.urlParams}">
+					<a href="<%=basePath%>system/menus?pn=${page.pageNo-1}&ps=${page.pageSize}${page.urlParams}">
 					<input id="pagePnShang" type="hidden" name="pn" value="${page.pageNo-1}"/>
 					<img src="<%=basePath%>static/resource/images/back.gif" width="43" height="15" id="shangyiye"/>
 					</a>
@@ -213,19 +202,19 @@ A:hover {
 					<td>
 					<c:forEach begin="${page.viewStartPage}" end="${page.viewEndPage}" step="1" var="pageIndex">
 						<a <c:if test="${page.pageNo == pageIndex}">class="active"</c:if>
-						href="<%=basePath%>system/users?pn=${pageIndex}&ps=${page.pageSize}${page.urlParams}">${pageIndex}</a>
+						href="<%=basePath%>system/menus?pn=${pageIndex}&ps=${page.pageSize}${page.urlParams}">${pageIndex}</a>
 					</c:forEach>
 					</td>
 					
 					<td width="45">
-					<a href="<%=basePath%>system/users?pn=${page.pageNo+1}&ps=${page.pageSize}${page.urlParams}">
+					<a href="<%=basePath%>system/menus?pn=${page.pageNo+1}&ps=${page.pageSize}${page.urlParams}">
 					<input id="pagePnXia" type="hidden" name="pn" value="${page.pageNo+1}"/>
 					<input id="totalPage" type="hidden" name="pn" value="${page.totalPage+1}"/>
 					<img id="xiayiye" src="<%=basePath%>static/resource/images/next.gif" width="43" height="15"  />
 					</a>
 					</td>
 					<td width="40">
-					<a href="<%=basePath%>system/users?pn=${page.totalPage}&ps=${page.pageSize}${page.urlParams}">
+					<a href="<%=basePath%>system/menus?pn=${page.totalPage}&ps=${page.pageSize}${page.urlParams}">
 					<img src="<%=basePath%>static/resource/images/last.gif" width="37" height="15" />
 					</a>
 					</td>
@@ -247,7 +236,7 @@ A:hover {
 	//页面跳转
 	$(function(){
 		$("#_page_ps_select").change(function(){
-			window.location.href = '<%=basePath%>system/users?pn=${page.pageNo}${page.urlParams}&ps='+$(this).val();
+			window.location.href = '<%=basePath%>system/menus?pn=${page.pageNo}${page.urlParams}&ps='+$(this).val();
 		});
 	});
 </script>

@@ -16,4 +16,7 @@ public interface RolesDao extends CrudDao<Roles>{
 	 * @return
 	 */
 	public Roles findRolesByRolename(String rolename);
+	
+
+
 }

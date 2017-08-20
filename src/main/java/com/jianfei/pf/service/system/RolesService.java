@@ -21,4 +21,6 @@ public class RolesService extends CrudService<RolesDao, Roles>{
 	public Roles findRolesByRolename(String rolename){
 		return this.rolesDao.findRolesByRolename(rolename);
 	}
+	
+	
 }

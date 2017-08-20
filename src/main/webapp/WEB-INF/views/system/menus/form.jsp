@@ -29,60 +29,50 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <form name="form1" onsubmit="return validator(this)" method="post" >
 <table class=editTable cellSpacing=1 cellPadding=0 width="100%" align=center border=0>
 	<tr class=editHeaderTr>
-		<td class=editHeaderTd colSpan=2>${empty users.id ? "新增" : "编辑" }用户</td>
+		<td class=editHeaderTd colSpan=2>${empty menus.id ? "新增" : "编辑" }权限</td>
 	</tr>  
     <tr>
-	  	<td bgcolor="#FFFDF0" width="160px"><div align="center">姓名：</div></td>
+	  	<td bgcolor="#FFFDF0" width="160px"><div align="center">名称：</div></td>
 		<td colspan="3" bgcolor="#FFFFFF">
-		<input type="hidden" name="id" value="${users.id}">
-		<input type="text" maxlength="10" style="width: 145px" valid="required|isChinese"  errmsg="姓名不能为空!|请输入中文姓名!" name="username" value="${users.username }">
+		<input type="hidden" name="id" value="${menus.id}">
+		<input type="text" style="width: 145px" valid="required|isChinese"  errmsg="姓名不能为空!|请输入中文姓名!" name="name" value="${menus.name }">
 		</td>
     </tr>
     <tr>
-	  	<td bgcolor="#FFFDF0" width="160px"><div align="center">密码：</div></td>
+	  	<td bgcolor="#FFFDF0" width="160px"><div align="center">链接：</div></td>
 		<td colspan="3" bgcolor="#FFFFFF">
-		<input id="userpassword" type="password" maxlength="10" style="width: 145px" valid="required"  errmsg="密码不能为空!" name="password" value="${users.password }">
+		<input id="userpassword" type="text" style="width: 145px" valid="required"  errmsg="密码不能为空!" name="href" value="${menus.href }">
 		<span id="err1"></span><span id="err2"></span><span id="err3"></span>
 		</td>
     </tr>
     <tr>
-	  	<td bgcolor="#FFFDF0" width="160px"><div align="center">昵称：</div></td>
+	  	<td bgcolor="#FFFDF0" width="160px"><div align="center">权限标识：</div></td>
 		<td colspan="3" bgcolor="#FFFFFF">
-		<input id="usernickname" type="text" maxlength="10" style="width: 145px" valid="required"  errmsg="昵称不能为空!" name="nickname" value="${users.nickname }">
+		<input id="usernickname" type="text" style="width: 145px" valid="required"  errmsg="昵称不能为空!" name="permission" value="${menus.permission }">
 		<span id="err5"></span>
 		</td>
     </tr>
     
     <tr>
-	  	<td bgcolor="#FFFDF0" width="160px"><div align="center">性别：</div></td>
+	  	<td bgcolor="#FFFDF0" width="160px"><div align="center">类型：</div></td>
 		<td colspan="3" bgcolor="#FFFFFF">
-			<c:forEach items="${gender}" var="gender">
+			<c:forEach items="${type}" var="t">
 				<c:choose>
-				<c:when test="${empty users.id}">
-				<input type="radio" name="gender" value="${gender}" <c:if test="${'NAN' eq gender}">checked="checked"</c:if>/>${gender.name}	
+				<c:when test="${empty menus.id}">
+				<input type="radio" name="type" value="${t}" />${t.name}	
 				</c:when>
 				<c:otherwise>
-				<input type="radio" name="gender" value="${gender}" <c:if test="${users.gender eq gender}">checked="checked"</c:if>/>${gender.name}
+				<input type="radio" name="type" value="${t}" <c:if test="${menus.type eq t}">checked="checked"</c:if>/>${t.name}
 				</c:otherwise>
 				</c:choose>
 			</c:forEach>
 		</td>
     </tr>
     <tr>
-	  	<td bgcolor="#FFFDF0" width="160px"><div align="center">年龄：</div></td>
+	  	<td bgcolor="#FFFDF0" width="160px"><div align="center">排序号：</div></td>
 		<td colspan="3" bgcolor="#FFFFFF">
-		<input id="userage" type="text" maxlength="2" style="width: 145px" valid="required|isNumber" errmsg="年龄不能为空!|请输入正确的年龄!" name="age" value="${users.age }">
+		<input id="userage" type="text"  style="width: 145px" valid="required|isNumber" errmsg="年龄不能为空!|请输入正确的年龄!" name="sort" value="${menus.sort }">
 		<span id="err4"></span>
-		</td>
-    </tr>
-    <tr>
-	  	<td bgcolor="#FFFDF0" width="160px"><div align="center">角色：</div></td>
-		<td colspan="3" bgcolor="#FFFFFF">
-			
-				<c:forEach items="${roles}" var="r">
-					<input type="radio" name="role.id" value="${r.id}"<c:if test="${users.role.id eq r.id}">checked="checked"</c:if>>${r.rolename}
-				</c:forEach>
-			
 		</td>
     </tr>
 </table>
@@ -90,8 +80,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <table class=editTable cellSpacing=1 cellPadding=0 width="100%" align=center border=0>
 	<tr bgcolor="#ECF3FD">
 		<td width="25%"></td>
-		<td width="17%"><input id="usersubmit" type="submit" name="submit"  value="${empty users.id ? "新增" : "编辑" }"></td>
-		<td width="17%"><c:if test="${empty users.id}"><input type="reset" name="reset"  value="重置"></c:if></td>
+		<td width="17%"><input id="menusubmit" type="submit" name="submit"  value="${empty menus.id ? "新增" : "编辑" }"></td>
+		<td width="17%"><c:if test="${empty menus.id}"><input type="reset" name="reset"  value="重置"></c:if></td>
 		<td width="3%"><input type="button" name="button"  onClick="history.back() "  value="返回"></td>
 		<td width="46%"></td>
 	</tr>
