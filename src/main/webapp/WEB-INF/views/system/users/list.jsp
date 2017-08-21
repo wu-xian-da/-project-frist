@@ -109,34 +109,47 @@ A:hover {
     	<form method="post">
 	    <table width="100%" border="0" cellspacing="0" cellpadding="0">
 	      <tr>
-	        <td width="12" height="30"><img src="<%=basePath%>static/resource/images/tab_03.gif" width="12" height="30" /></td>
+	        <td width="12" height="30">
+	        <img src="<%=basePath%>static/resource/images/tab_03.gif" width="12" height="30" />
+	        </td>
 	        <td>
 	       
 		        <table width="100%" border="0" cellspacing="0" cellpadding="0">
 		          <tr>
 		          	<td class="STYLE4" align="left" width="100px">条件检索</td>
-		            <td class="STYLE4" align="left" width="150px">姓名：<input type="text" name="username" style="width: 50px"/></td>
-		            <td class="STYLE4" align="left" width="150px">昵称：<input type="text" name="nickname" style="width: 50px"/></td>
+		            <td class="STYLE4" align="left" width="150px">姓名：
+		            <input type="text" name="username" style="width: 50px"/>
+		            </td>
+		            <td class="STYLE4" align="left" width="150px">昵称：
+		            <input type="text" name="nickname" style="width: 50px"/>
+		            </td>
 		            <td class="STYLE4" align="left" width="200px">性别：
 		            	<select name="gender" >
 		            		 <option value="">全部(单选)</option>
 							<c:forEach items="${gender}" var="sex">
-								<option value="${sex}" <c:if test="${page.entity.gender eq sex }">selected="selected"</c:if>>${sex.name}</option>
+								<option value="${sex}" <c:if test="${page.entity.gender eq sex }">selected="selected"</c:if>>
+								${sex.name}</option>
 							</c:forEach>
 						</select>
 					</td>
-		            <td class="STYLE4" align="right" width="200px">检索时间：<input type="text" name="beginCreateTime" style="width: 100px" class="sang_Calender"/><script type="text/javascript" src="<%=basePath%>static/resource/js/datetime.js"></script></td>
+		            <td class="STYLE4" align="right" width="200px">检索时间：
+		            <input type="text" name="beginCreateTime" style="width: 100px" class="sang_Calender"/>
+		            <script type="text/javascript" src="<%=basePath%>static/resource/js/datetime.js"></script>
+		            </td>
 		            <td class="STYLE4" align="left" width="2px">至</td>
-		            <td class="STYLE4" align="left"><input type="text" name="endCreateTime" style="width: 100px" class="sang_Calender"/><script type="text/javascript" src="<%=basePath%>static/resource/js/datetime.js"></script></td>
-		            <td class="STYLE4" align="right">&nbsp;&nbsp;
-		            <shiro:hasPermission name="users:select">
-		            <input  type="submit" value="查询" style="width:50px"/>
-		            </shiro:hasPermission>
+		            <td class="STYLE4" align="left">
+		            <input type="text" name="endCreateTime" style="width: 100px" class="sang_Calender"/>
+		            <script type="text/javascript" src="<%=basePath%>static/resource/js/datetime.js"></script>
 		            </td>
 		            <td class="STYLE4" align="right">&nbsp;&nbsp;
-		            <shiro:hasPermission name="users:insert">
+		           
+		            <input  type="submit" value="查询" style="width:50px"/>
+		            
+		            </td>
+		            <td class="STYLE4" align="right">&nbsp;&nbsp;
+		            
 		            <input  type="button" value="添加"  onclick="add()"  style="width:50px"/>
-		            </shiro:hasPermission>
+		            
 		            </td>            
 		          </tr>
 		        </table>
@@ -156,43 +169,90 @@ A:hover {
     <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
       <tr>
         <td width="8" background="<%=basePath%>static/resource/images/tab_12.gif">&nbsp;</td>
-        <td><table width="100%" border="0" cellpadding="0" cellspacing="1" bgcolor="b5d6e6" onmouseover="changeto()"  onmouseout="changeback()">
+        <td>
+        <table width="100%" border="0" cellpadding="0" cellspacing="1" bgcolor="b5d6e6" onmouseover="changeto()"  onmouseout="changeback()">
           <tr>
-            <td width="3%" height="22" background="<%=basePath%>static/resource/images/bg2.gif" bgcolor="#FFFFFF"><div align="center"><span class="STYLE1">序号</span></div></td>
-            <td width="8%" height="22" background="<%=basePath%>static/resource/images/bg2.gif" bgcolor="#FFFFFF"><div align="center"><span class="STYLE1">姓名</span></div></td>
-            <td width="8%" height="22" background="<%=basePath%>static/resource/images/bg2.gif" bgcolor="#FFFFFF"><div align="center"><span class="STYLE1">密码</span></div></td>
-            <td width="8%" height="22" background="<%=basePath%>static/resource/images/bg2.gif" bgcolor="#FFFFFF"><div align="center"><span class="STYLE1">昵称</span></div></td>		
-            <td width="7%" height="22" background="<%=basePath%>static/resource/images/bg2.gif" bgcolor="#FFFFFF"><div align="center"><span class="STYLE1">归属角色</span></div></td>		
-			<td width="2%" height="22" background="<%=basePath%>static/resource/images/bg2.gif" bgcolor="#FFFFFF"><div align="center"><span class="STYLE1">性别</span></div></td>
-			<td width="3%" height="22" background="<%=basePath%>static/resource/images/bg2.gif" bgcolor="#FFFFFF"><div align="center"><span class="STYLE1">年龄</span></div></td>
-			<td width="7.5%" height="22" background="<%=basePath%>static/resource/images/bg2.gif" bgcolor="#FFFFFF"><div align="center"><span class="STYLE1">创建时间</span></div></td>	
-			<td width="7.5%" height="22" background="<%=basePath%>static/resource/images/bg2.gif" bgcolor="#FFFFFF"><div align="center"><span class="STYLE1">登录时间</span></div></td>	
-			<td width="6%" height="22" background="<%=basePath%>static/resource/images/bg2.gif" bgcolor="#FFFFFF"><div align="center"><span class="STYLE1">IP</span></div></td>
-			<td width="15%" height="22" background="<%=basePath%>static/resource/images/bg2.gif" bgcolor="#FFFFFF" class="STYLE1"><div align="center">基本操作</div></td>
+            <td width="3%" height="22" background="<%=basePath%>static/resource/images/bg2.gif" bgcolor="#FFFFFF">
+            <div align="center"><span class="STYLE1">序号</span></div>
+            </td>
+            <td width="8%" height="22" background="<%=basePath%>static/resource/images/bg2.gif" bgcolor="#FFFFFF">
+            <div align="center"><span class="STYLE1">昵称</span></div>
+            </td>
+            <td width="8%" height="22" background="<%=basePath%>static/resource/images/bg2.gif" bgcolor="#FFFFFF">
+            <div align="center"><span class="STYLE1">姓名</span></div>
+            </td>
+            <td width="8%" height="22" background="<%=basePath%>static/resource/images/bg2.gif" bgcolor="#FFFFFF">
+            <div align="center"><span class="STYLE1">密码</span></div>
+            </td>		
+            <td width="7%" height="22" background="<%=basePath%>static/resource/images/bg2.gif" bgcolor="#FFFFFF">
+            <div align="center"><span class="STYLE1">归属角色</span></div>
+            </td>		
+			<td width="2%" height="22" background="<%=basePath%>static/resource/images/bg2.gif" bgcolor="#FFFFFF">
+			<div align="center"><span class="STYLE1">性别</span></div>
+			</td>
+			<td width="3%" height="22" background="<%=basePath%>static/resource/images/bg2.gif" bgcolor="#FFFFFF">
+			<div align="center"><span class="STYLE1">年龄</span></div>
+			</td>
+			<td width="7.5%" height="22" background="<%=basePath%>static/resource/images/bg2.gif" bgcolor="#FFFFFF">
+			<div align="center"><span class="STYLE1">创建时间</span></div>
+			</td>	
+			<td width="7.5%" height="22" background="<%=basePath%>static/resource/images/bg2.gif" bgcolor="#FFFFFF">
+			<div align="center"><span class="STYLE1">登录时间</span></div>
+			</td>	
+			<td width="6%" height="22" background="<%=basePath%>static/resource/images/bg2.gif" bgcolor="#FFFFFF">
+			<div align="center"><span class="STYLE1">IP</span></div>
+			</td>
+			<td width="15%" height="22" background="<%=basePath%>static/resource/images/bg2.gif" bgcolor="#FFFFFF" class="STYLE1">
+			<div align="center">基本操作</div>
+			</td>
 		</tr>
 		<c:forEach items="${page.data}" var="u">
  		<tr>
-            <td height="20" bgcolor="#FFFFFF"style="width: 3%"><div align="center"><span class="STYLE1">${u.id}</span></div></td>
-            <td height="20" bgcolor="#FFFFFF"style="width: 3%"><div align="center"><span class="STYLE1">${u.username}</span></div></td>
-            <td height="20" bgcolor="#FFFFFF"style="width: 3%"><div align="center"><span class="STYLE1">${u.password}</span></div></td>
-            <td height="20" bgcolor="#FFFFFF"style="width: 6%"><div align="center"><span class="STYLE1">${u.nickname}</span></div></td>
-            <td height="20" bgcolor="#FFFFFF"style="width: 6%"><div align="center"><span class="STYLE1">${u.role.rolename}</span></div></td>
-			<td height="20" bgcolor="#FFFFFF"style="width: 3%"><div align="center"><span class="STYLE1">${u.gender.name}</span></div></td>
-            <td height="20" bgcolor="#FFFFFF"style="width: 3%"><div align="center"><span class="STYLE1">${u.age}</span></div></td>
-            <td height="20" bgcolor="#FFFFFF"style="width: 5%"><div align="center"><span class="STYLE1"><fmt:formatDate value="${u.createTime}" pattern="yyyy-MM-dd HH:mm" type="date" /></span></div></td>
-			<td height="20" bgcolor="#FFFFFF"style="width: 3%"><div align="center"><span class="STYLE1"><fmt:formatDate value="${u.loginTime}" pattern="yyyy-MM-dd HH:mm" type="date" /></span></div></td>
-            <td height="20" bgcolor="#FFFFFF"style="width: 5%"><div align="center"><span class="STYLE1">${u.ip}</span></div></td>
+            <td height="20" bgcolor="#FFFFFF"style="width: 3%">
+            <div align="center"><span class="STYLE1">${u.id}</span></div>
+            </td>
+            <td height="20" bgcolor="#FFFFFF"style="width: 6%">
+            <div align="center"><span class="STYLE1">${u.nickname}</span></div>
+            </td>
+            <td height="20" bgcolor="#FFFFFF"style="width: 3%">
+            <div align="center"><span class="STYLE1">${u.username}</span></div>
+            </td>
+            <td height="20" bgcolor="#FFFFFF"style="width: 3%">
+            <div align="center"><span class="STYLE1">${u.password}</span></div>
+            </td>
+            <td height="20" bgcolor="#FFFFFF"style="width: 6%">
+            <div align="center"><span class="STYLE1">${u.role.rolename}</span></div>
+            </td>
+			<td height="20" bgcolor="#FFFFFF"style="width: 3%">
+			<div align="center"><span class="STYLE1">${u.gender.name}</span></div>
+			</td>
+            <td height="20" bgcolor="#FFFFFF"style="width: 3%">
+            <div align="center"><span class="STYLE1">${u.age}</span></div>
+            </td>
+            <td height="20" bgcolor="#FFFFFF"style="width: 5%">
+            <div align="center"><span class="STYLE1">
+            <fmt:formatDate value="${u.createTime}" pattern="yyyy-MM-dd HH:mm" type="date" /></span>
+            </div>
+            </td>
+			<td height="20" bgcolor="#FFFFFF"style="width: 3%">
+			<div align="center"><span class="STYLE1">
+			<fmt:formatDate value="${u.loginTime}" pattern="yyyy-MM-dd HH:mm" type="date" /></span>
+			</div>
+			</td>
+            <td height="20" bgcolor="#FFFFFF"style="width: 5%">
+            <div align="center"><span class="STYLE1">${u.ip}</span></div>
+            </td>
             <td height="20" bgcolor="#FFFFFF"style="width: 15%">
             <div align="center">
 	            <span class="STYLE4">
-		            <shiro:hasPermission name="users:update">
+		            
 		           		<img src="<%=basePath%>static/resource/images/edt.gif" width="16" height="16" />
 		            	<a href="${pageContext.request.contextPath}/system/users/update/${u.id}">编辑</a>&nbsp; 
-		            </shiro:hasPermission>
-		            <shiro:hasPermission name="users:delete">
+		            
+		            
 		            	<img src="<%=basePath%>static/resource/images/del.gif" width="16" height="16" />
 		            	<a href="${pageContext.request.contextPath}/system/users/delete/${u.id}" class="deleteuser">删除</a>
-		            </shiro:hasPermission>
+		            
 		            <input type="hidden" name="username" value="${u.username }" />
 	            </span>
             </div>
@@ -205,10 +265,14 @@ A:hover {
     </table></td>
   </tr>
    <tr>
-    <td height="35" background="<%=basePath%>static/resource/images/tab_19.gif"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+    <td height="35" background="<%=basePath%>static/resource/images/tab_19.gif">
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
       <tr>
-        <td width="12" height="35"><img src="<%=basePath%>static/resource/images/tab_18.gif" width="12" height="35" /></td>
-        <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <td width="12" height="35">
+        <img src="<%=basePath%>static/resource/images/tab_18.gif" width="12" height="35" />
+        </td>
+        <td>
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
           <tr>
             <td class="STYLE4">&nbsp;&nbsp;<span>共${page.totalRecord }条数据</span> <span><i>|</i>每页显示
 			<select id="_page_ps_select">
@@ -216,10 +280,10 @@ A:hover {
 					<option value="${s }" <c:if test="${page.pageSize == s}">selected="selected"</c:if>>${s}</option>
 				</c:forEach>
 			</select>条</span></td>
-            <td><table border="0" align="right" cellpadding="0" cellspacing="0">
+            <td>
+            <table border="0" align="right" cellpadding="0" cellspacing="0">
                 <tr>
-			       
-					<td width="40">
+			       <td width="40">
 					<a href="<%=basePath%>system/users?pn=1&ps=${page.pageSize}${page.urlParams}">
 					<img src="<%=basePath%>static/resource/images/first.gif" width="37" height="15"  />
 					</a>
@@ -250,14 +314,16 @@ A:hover {
 					<img src="<%=basePath%>static/resource/images/last.gif" width="37" height="15" />
 					</a>
 					</td>
-					
                 </tr>
-            </table></td>
+            </table>
+            </td>
           </tr>
-        </table></td>
+        </table>
+        </td>
         <td width="16"><img src="<%=basePath%>static/resource/images/tab_20.gif" width="16" height="35" /></td>
       </tr>
-    </table></td>
+    </table>
+    </td>
   </tr>
 </table>
 </body>
