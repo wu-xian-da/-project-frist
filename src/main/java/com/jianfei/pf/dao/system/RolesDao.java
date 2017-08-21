@@ -17,6 +17,10 @@ public interface RolesDao extends CrudDao<Roles>{
 	 */
 	public Roles findRolesByRolename(String rolename);
 	
-
-
+	public int insertRoleMenu(Roles entity);
+	
+	public int deleteRoleMenu(int id);
+	
+	public Roles getRoleMenus(int id);
+	
 }

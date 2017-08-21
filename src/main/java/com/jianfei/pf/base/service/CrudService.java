@@ -51,4 +51,13 @@ public abstract class CrudService<D extends CrudDao<T>,T extends BaseEntity> ext
 	    page.setEntity(entity);
 		return page;
 	}
+	
+	/**
+	 * 获取单条数据
+	 * @param id
+	 * @return
+	 */
+	public T get(int id) {
+		return dao.get(id);
+	}
 }

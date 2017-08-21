@@ -14,6 +14,10 @@ public interface MenusDao extends CrudDao<Menus> {
 
 	public Menus findMenusByPermission(String permission);
 	
+	/***
+	 * 角色查询权限
+	 * @return
+	 */
 	public List<Menus> findMenuForRole();
 
 }

@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.jianfei.pf.entity.system.Users;
 import com.jianfei.pf.service.system.UsersService;
 import com.jianfei.pf.utils.http.HttpUtils;
+import com.jianfei.pf.utils.shiro.ShiroDbRealm;
 
 @Controller
 @RequestMapping(value="/")
@@ -50,6 +51,9 @@ public class LoginController {
 				
 				request.getSession().setAttribute("username", user.getUsername());
 				System.out.println("登录成功");
+				
+				
+				
 				return "layout/main";
 			} else if (users.getNickname().equals(user.getNickname()) && !users.getPassword().equals(user.getPassword())){
 				response.sendRedirect("http://localhost:8080/system?error2=password");

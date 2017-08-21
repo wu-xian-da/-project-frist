@@ -27,4 +27,11 @@ public interface CrudDao<T> extends BaseDao {
 	 * @return
 	 */
 	public Page<T> findPage(T entity);
+	
+	/**
+	 * 获取单条数据
+	 * @param id
+	 * @return
+	 */
+	public T get(int id);
 }

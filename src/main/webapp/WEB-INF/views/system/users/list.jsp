@@ -1,6 +1,7 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="shiro" uri="http://shiro.apache.org/tags"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -127,8 +128,16 @@ A:hover {
 		            <td class="STYLE4" align="right" width="200px">检索时间：<input type="text" name="beginCreateTime" style="width: 100px" class="sang_Calender"/><script type="text/javascript" src="<%=basePath%>static/resource/js/datetime.js"></script></td>
 		            <td class="STYLE4" align="left" width="2px">至</td>
 		            <td class="STYLE4" align="left"><input type="text" name="endCreateTime" style="width: 100px" class="sang_Calender"/><script type="text/javascript" src="<%=basePath%>static/resource/js/datetime.js"></script></td>
-		            <td class="STYLE4" align="right">&nbsp;&nbsp;<input  type="submit" value="查询" style="width:50px"/></td>
-		            <td class="STYLE4" align="right">&nbsp;&nbsp;<input  type="button" value="添加"  onclick="add()"  style="width:50px"/></td>            
+		            <td class="STYLE4" align="right">&nbsp;&nbsp;
+		            <shiro:hasPermission name="users:select">
+		            <input  type="submit" value="查询" style="width:50px"/>
+		            </shiro:hasPermission>
+		            </td>
+		            <td class="STYLE4" align="right">&nbsp;&nbsp;
+		            <shiro:hasPermission name="users:insert">
+		            <input  type="button" value="添加"  onclick="add()"  style="width:50px"/>
+		            </shiro:hasPermission>
+		            </td>            
 		          </tr>
 		        </table>
 		    
@@ -173,9 +182,21 @@ A:hover {
             <td height="20" bgcolor="#FFFFFF"style="width: 5%"><div align="center"><span class="STYLE1"><fmt:formatDate value="${u.createTime}" pattern="yyyy-MM-dd HH:mm" type="date" /></span></div></td>
 			<td height="20" bgcolor="#FFFFFF"style="width: 3%"><div align="center"><span class="STYLE1"><fmt:formatDate value="${u.loginTime}" pattern="yyyy-MM-dd HH:mm" type="date" /></span></div></td>
             <td height="20" bgcolor="#FFFFFF"style="width: 5%"><div align="center"><span class="STYLE1">${u.ip}</span></div></td>
-            <td height="20" bgcolor="#FFFFFF"style="width: 15%"><div align="center"><span class="STYLE4"><img src="<%=basePath%>static/resource/images/edt.gif" width="16" height="16" />
-            <a href="${pageContext.request.contextPath}/system/users/update/${u.id}">编辑</a>&nbsp; <img src="<%=basePath%>static/resource/images/del.gif" width="16" height="16" />
-            <a href="${pageContext.request.contextPath}/system/users/delete/${u.id}" class="deleteuser">删除</a><input type="hidden" name="username" value="${u.username }" /></span></div></td>
+            <td height="20" bgcolor="#FFFFFF"style="width: 15%">
+            <div align="center">
+	            <span class="STYLE4">
+		            <shiro:hasPermission name="users:update">
+		           		<img src="<%=basePath%>static/resource/images/edt.gif" width="16" height="16" />
+		            	<a href="${pageContext.request.contextPath}/system/users/update/${u.id}">编辑</a>&nbsp; 
+		            </shiro:hasPermission>
+		            <shiro:hasPermission name="users:delete">
+		            	<img src="<%=basePath%>static/resource/images/del.gif" width="16" height="16" />
+		            	<a href="${pageContext.request.contextPath}/system/users/delete/${u.id}" class="deleteuser">删除</a>
+		            </shiro:hasPermission>
+		            <input type="hidden" name="username" value="${u.username }" />
+	            </span>
+            </div>
+            </td>
           </tr>
           </c:forEach>
          </table></td>

@@ -22,5 +22,15 @@ public class RolesService extends CrudService<RolesDao, Roles>{
 		return this.rolesDao.findRolesByRolename(rolename);
 	}
 	
+	public int insertRoleMenu(Roles entity){
+		return this.rolesDao.insertRoleMenu(entity);
+	}
 	
+	public int deleteRoleMenu(int id){
+		return this.rolesDao.deleteRoleMenu(id);
+	}
+	
+	public Roles getRoleMenus(int id){
+		return this.dao.getRoleMenus(id);
+	}
 }

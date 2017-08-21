@@ -1,6 +1,7 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="shiro" uri="http://shiro.apache.org/tags"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -124,8 +125,12 @@ A:hover {
 							</c:forEach>
 						</select>
 					</td>
+					<shiro:hasPermission name="menus:select">
 		            <td class="STYLE4" align="right">&nbsp;&nbsp;<input  type="submit" value="查询" style="width:50px"/></td>
+		            </shiro:hasPermission>
+		            <shiro:hasPermission name="menus:insert">
 		            <td class="STYLE4" align="right">&nbsp;&nbsp;<input  type="button" value="添加"  onclick="add()"  style="width:50px"/></td>            
+		            </shiro:hasPermission>
 		          </tr>
 		        </table>
 		    
@@ -162,9 +167,21 @@ A:hover {
             <td height="20" bgcolor="#FFFFFF"><div align="center"><span class="STYLE1">${p.permission}</span></div></td>
             <td height="20" bgcolor="#FFFFFF"><div align="center"><span class="STYLE1">${p.type.name}</span></div></td>
 			<td height="20" bgcolor="#FFFFFF"><div align="center"><span class="STYLE1">${p.sort}</span></div></td>
-            <td height="20" bgcolor="#FFFFFF"><div align="center"><span class="STYLE4"><img src="<%=basePath%>static/resource/images/edt.gif" width="16" height="16" />
-            <a href="${pageContext.request.contextPath}/system/menus/update/${p.id}">编辑</a>&nbsp; <img src="<%=basePath%>static/resource/images/del.gif" width="16" height="16" />
-            <a href="${pageContext.request.contextPath}/system/menus/delete/${p.id}" class="deleteuser">删除</a><input type="hidden" name="username" value="${p.name }" /></span></div></td>
+            <td height="20" bgcolor="#FFFFFF">
+            <div align="center">
+            	<span class="STYLE4">
+		            <shiro:hasPermission name="menus:update">
+		            	<img src="<%=basePath%>static/resource/images/edt.gif" width="16" height="16" />
+		            	<a href="${pageContext.request.contextPath}/system/menus/update/${p.id}">编辑</a>&nbsp; 
+		            </shiro:hasPermission>
+		            <shiro:hasPermission name="menus:delete">
+		            	<img src="<%=basePath%>static/resource/images/del.gif" width="16" height="16" />
+		            	<a href="${pageContext.request.contextPath}/system/menus/delete/${p.id}" class="deleteuser">删除</a>
+		            </shiro:hasPermission>
+	            	<input type="hidden" name="username" value="${p.name }" />
+	            </span>
+            </div>
+            </td>
           </tr>
           </c:forEach>
          </table></td>

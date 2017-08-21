@@ -16,6 +16,7 @@ import com.jianfei.pf.entity.system.Roles;
 import com.jianfei.pf.service.system.MenusService;
 import com.jianfei.pf.service.system.RolesService;
 
+
 @Controller
 @RequestMapping("/system/roles")
 public class RolesController {
@@ -45,6 +46,7 @@ public class RolesController {
 			return "system/roles/form";
 		} 
 		int result = this.rolesService.insert(roles);
+		this.rolesService.insertRoleMenu(roles);
 		if (result > 0) {
 			System.out.println("保存角色成功");
 		} else {
@@ -55,13 +57,16 @@ public class RolesController {
 	
 	@RequestMapping(value="/update/{id}",method=RequestMethod.GET)
 	public String Formupdate(@PathVariable("id") int id,Model model){
+		System.out.println(rolesService.get(id)+"====");
 		model.addAttribute("roles",rolesService.findById(id));
+		model.addAttribute("role",rolesService.get(id));
+		model.addAttribute("menus", this.menusService.findMenuForRole());
 		return "system/roles/form";
 	}
 	
 	@RequestMapping(value="/update/{id}",method=RequestMethod.POST)
 	public String update(@PathVariable("id") int id,Roles roles,Model model) {
-		System.out.println(roles.getRolename());
+		System.out.println(roles);
 		Roles role = this.rolesService.findRolesByRolename(roles.getRolename());
 		System.out.println(role);
 		if (role != null && role.getId() != id) {
@@ -69,6 +74,8 @@ public class RolesController {
 			return "system/roles/form";
 		}
 		int result = rolesService.update(roles);
+		this.rolesService.deleteRoleMenu(id);
+		this.rolesService.insertRoleMenu(roles);
 		if (result > 0) {
 			System.out.println("更新成功");
 		} else {

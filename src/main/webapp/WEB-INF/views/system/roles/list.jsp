@@ -1,6 +1,7 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="shiro" uri="http://shiro.apache.org/tags"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -115,8 +116,17 @@ A:hover {
 		          <tr>
 		            <td class="STYLE4" align="left" width="10%">条件检索</td>
 		            <td class="STYLE4" align="left" width="60%">&nbsp;&nbsp;角色名称：<input type="text" name="rolename" style="width: 100px"/></td>
-		            <td class="STYLE4" align="right" width="15%">&nbsp;&nbsp;<input  type="submit" value="查询" style="width:50px"/></td>
-		            <td class="STYLE4" align="right" width="10%">&nbsp;&nbsp;<input  type="button" value="添加"  onclick="add()"  style="width:50px"/></td>            
+		            
+		            <td class="STYLE4" align="right" width="15%">&nbsp;&nbsp;
+		            <shiro:hasPermission name="roles:select">
+		            <input  type="submit" value="查询" style="width:50px"/>
+		            </shiro:hasPermission>
+		            </td>
+		            <td class="STYLE4" align="right" width="10%">&nbsp;&nbsp;
+		            <shiro:hasPermission name="roles:insert">
+		            <input  type="button" value="添加"  onclick="add()"  style="width:50px"/>
+		            </shiro:hasPermission>
+		            </td>            
 		          </tr>
 		        </table>
 		    
@@ -147,11 +157,22 @@ A:hover {
             <td height="20" bgcolor="#FFFFFF"style="width: 3%"><div align="center"><span class="STYLE1">${r.id}</span></div></td>
             <td height="20" bgcolor="#FFFFFF"style="width: 3%"><div align="center"><span class="STYLE1">${r.rolename}</span></div></td>
             <td height="20" bgcolor="#FFFFFF"style="width: 3%"><div align="center"><span class="STYLE1">${r.userList}</span></div></td>
-            <td height="20" bgcolor="#FFFFFF"style="width: 15%"><div align="center"><span class="STYLE4"><img src="<%=basePath%>static/resource/images/edt.gif" width="16" height="16" />
-            <a href="<%=basePath%>system/roles/update/${r.id}">编辑</a>&nbsp; <img src="<%=basePath%>static/resource/images/del.gif" width="16" height="16" />
-            <a href="<%=basePath%>system/roles/delete/${r.id}" class="deleterole">删除</a>
-            <input type="hidden" name="rolename" value="${r.rolename}"/>
-            <input type="hidden" name="users" value="${r.userList}"/></span></div></td>
+            <td height="20" bgcolor="#FFFFFF"style="width: 15%">
+            <div align="center">
+	            <span class="STYLE4">
+		            <shiro:hasPermission name="roles:update">
+			            <img src="<%=basePath%>static/resource/images/edt.gif" width="16" height="16" />
+			            <a href="<%=basePath%>system/roles/update/${r.id}">编辑</a>&nbsp; 
+		            </shiro:hasPermission>
+		            <shiro:hasPermission name="roles:delete">
+			            <img src="<%=basePath%>static/resource/images/del.gif" width="16" height="16" />
+			            <a href="<%=basePath%>system/roles/delete|/${r.id}" class="deleterole">删除</a>
+		            </shiro:hasPermission>
+		            <input type="hidden" name="rolename" value="${r.rolename}"/>
+		            <input type="hidden" name="users" value="${r.userList}"/>
+	            </span>
+            </div>
+            </td>
           </tr>
           </c:forEach>
          </table></td>
