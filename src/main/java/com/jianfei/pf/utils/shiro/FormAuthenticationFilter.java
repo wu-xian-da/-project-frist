@@ -5,16 +5,23 @@
   */
 package com.jianfei.pf.utils.shiro;
 
+import java.io.IOException;
 import java.util.Date;
 
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationToken;
 import org.apache.shiro.subject.Subject;
 import org.apache.shiro.web.servlet.ShiroHttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
+
+import com.jianfei.pf.entity.system.Users;
+import com.jianfei.pf.service.system.UsersService;
+import com.jianfei.pf.utils.http.HttpUtils;
 
 
 /****
@@ -23,53 +30,42 @@ import org.springframework.beans.factory.annotation.Autowired;
  */
 public class FormAuthenticationFilter extends org.apache.shiro.web.filter.authc.FormAuthenticationFilter{
 	
-	private static final String UA = "User-Agent";
-	
-	//@Autowired
-	//private LogLoginService logLoginService;
-	
-	/*protected AuthenticationToken createToken(ServletRequest request, ServletResponse response) {
-        String username = getUsername(request);
-        String password = getPassword(request);
-        boolean rememberMe = isRememberMe(request);
-        String host = super.getHost(request);
+	@Autowired
+	private UsersService usersService;
 
-        return new UsernamePasswordToken(username, password.toCharArray(), rememberMe, host);
-    }*/
-
-   /* protected void setFailureAttribute(ServletRequest request, AuthenticationException ae) {
+   protected void setFailureAttribute(ServletRequest request, AuthenticationException ae) {
     	ae.printStackTrace();
     	request.setAttribute(Constants.MESSAGE, ae.getMessage());
         super.setFailureAttribute(request, ae);
     }
-
-    protected boolean onLoginSuccess(AuthenticationToken token, Subject subject, ServletRequest request,
-            ServletResponse response) throws Exception {
-        
-        this.saveLogLogin(request, LoginStatus.Success);
-        return super.onLoginSuccess(token, subject, request, response);
-    }
-
-    protected boolean onLoginFailure(AuthenticationToken token, AuthenticationException e, ServletRequest request,
-            ServletResponse response) {
-        
-        this.saveLogLogin(request, LoginStatus.Fail);
-        return super.onLoginFailure(token, e, request, response);
-    }
     
-    private void saveLogLogin(ServletRequest request, LoginStatus status){
-    	System.out.println("----------------------"+status);
-        ShiroHttpServletRequest httpRequest = (ShiroHttpServletRequest)request;
-        try{
-            this.logLoginService.save(new LogLogin(
-                    getUsername(request), 
-                    new Date(), 
-                    httpRequest.getHeader(UA), 
-                    HttpUtils.getRemoteAddr(httpRequest), 
-                    status));
-        }
-        catch(Exception e){
-            e.printStackTrace();
-        }
-    }*/
+    private String saveLogLogin(ServletRequest request,Users users,HttpServletResponse response) throws IOException{
+    	ShiroHttpServletRequest httpRequest = (ShiroHttpServletRequest)request;
+    	Users user = usersService.findUsersByNcikname(users.getNickname());
+		if (user != null) {
+			if (users.getNickname().equals(user.getNickname()) && users.getPassword().equals(user.getPassword())) {
+				user.setLoginTime(new Date());
+				user.setIp(HttpUtils.getRemoteAddr(httpRequest));
+				usersService.updateLoginTimeAndIp(user);
+				
+				httpRequest.getSession().setAttribute("username", user.getUsername());
+				
+				System.out.println("登录成功");
+				
+				
+				
+				return "layout/main";
+			} else if (users.getNickname().equals(user.getNickname()) && !users.getPassword().equals(user.getPassword())){
+				response.sendRedirect("http://localhost:8080/system?error2=password");
+				return "login";
+			} else {
+				response.sendRedirect("http://localhost:8080/system?error1=nickname");
+				return "login";
+			}
+		}else {
+			System.out.println("登录失败");
+			response.sendRedirect("http://localhost:8080/system?error3=fail");
+			return "login";
+		}
+    }
 }

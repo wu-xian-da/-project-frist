@@ -19,9 +19,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.jianfei.pf.entity.system.Users;
+import com.jianfei.pf.service.system.RolesService;
 import com.jianfei.pf.service.system.UsersService;
 import com.jianfei.pf.utils.http.HttpUtils;
-import com.jianfei.pf.utils.shiro.ShiroDbRealm;
+import com.jianfei.pf.utils.shiro.Constants;
+import com.jianfei.pf.utils.shiro.SessionUtils;
 
 @Controller
 @RequestMapping(value="/")
@@ -29,6 +31,9 @@ public class LoginController {
 	
 	@Autowired
 	private UsersService usersService;
+	
+	@Autowired
+	private RolesService rolesService;
 	
 	@RequestMapping
 	public String loginPage(){
@@ -50,6 +55,14 @@ public class LoginController {
 				usersService.updateLoginTimeAndIp(user);
 				
 				request.getSession().setAttribute("username", user.getUsername());
+				
+				user.setRole(this.rolesService.getRoleMenus(user.getRole().getId()));
+				
+		        SessionUtils.setSessionAttribute(Constants.USER_MENUS, user.getRole().getUserMenus());
+		        SessionUtils.setSessionAttribute(Constants.USER_PERMS, user.getRole().getUserPermissions());
+		        
+		        //request.getSession().setAttribute("menus_buttons",user.getRole().getUserPermissions());
+		        
 				System.out.println("登录成功");
 				
 				

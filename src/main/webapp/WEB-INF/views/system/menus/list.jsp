@@ -126,14 +126,18 @@ A:hover {
 						</select>
 					</td>
 		            <td class="STYLE4" align="right">&nbsp;&nbsp;
-		            
+		            <c:forEach items="${userPerms}" var="up">
+		           	<c:if test="${up eq 'menus:select'}">
 		            <input  type="submit" value="查询" style="width:50px"/>
-		            
+		            </c:if>
+		            </c:forEach>
 		            </td>
 		            <td class="STYLE4" align="right">&nbsp;&nbsp;
-		            
+		            <c:forEach items="${userPerms}" var="up">
+		           	<c:if test="${up eq 'menus:insert'}">
 		            <input  type="button" value="添加"  onclick="add()"  style="width:50px"/>
-		            
+		            </c:if>
+		            </c:forEach>
 		            </td>
 		          </tr>
 		        </table>
@@ -174,13 +178,18 @@ A:hover {
             <td height="20" bgcolor="#FFFFFF">
             <div align="center">
             	<span class="STYLE4">
-		            
+		            <c:forEach items="${userPerms}" var="up">
+		           	<c:if test="${up eq 'menus:update'}">
 		            	<img src="<%=basePath%>static/resource/images/edt.gif" width="16" height="16" />
 		            	<a href="${pageContext.request.contextPath}/system/menus/update/${p.id}">编辑</a>&nbsp; 
-		           
+		           </c:if>
+		           </c:forEach>
+		           <c:forEach items="${userPerms}" var="up">
+		           <c:if test="${up eq 'menus:delete'}">
 		            	<img src="<%=basePath%>static/resource/images/del.gif" width="16" height="16" />
 		            	<a href="${pageContext.request.contextPath}/system/menus/delete/${p.id}" class="deleteuser">删除</a>
-		           
+		           </c:if>
+		           </c:forEach>
 	            	<input type="hidden" name="username" value="${p.name }" />
 	            </span>
             </div>

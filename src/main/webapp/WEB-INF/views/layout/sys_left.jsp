@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
-<%@ taglib prefix="shiro" uri="http://shiro.apache.org/tags"%>    
+<%@ include file="/WEB-INF/include/taglib.jsp"%> 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 	<head>
@@ -16,50 +15,16 @@
 
 <style type="text/css">
 <!--
-body {
-	margin-left: 0px;
-	margin-top: 0px;
-	margin-right: 0px;
-	margin-bottom: 0px;
-}
-
-.STYLE1 {
-	font-size: 12px;
-	color: #FFFFFF;
-}
-
-.STYLE3 {
-	font-size: 12px;
-	color: #033d61;
-}
+body {margin-left: 0px;margin-top: 0px;margin-right: 0px;margin-bottom: 0px;}
+.STYLE1 {font-size: 12px;color: #FFFFFF;}
+.STYLE3 {font-size: 12px;color: #033d61;}
 -->
 </style>
-		<style type="text/css">
-.menu_title SPAN {
-	FONT-WEIGHT: bold;
-	LEFT: 3px;
-	COLOR: #ffffff;
-	POSITION: relative;
-	TOP: 2px
-}
-
-.menu_title2 SPAN {
-	FONT-WEIGHT: bold;
-	LEFT: 3px;
-	COLOR: #FFCC00;
-	POSITION: relative;
-	TOP: 2px
-}
-
-.style1 {
-	font-size: 12px;
-}
-
-a {
-	text-decoration: none;
-	color: #033d61;
-}
-}
+<style type="text/css">
+.menu_title SPAN {FONT-WEIGHT: bold;LEFT: 3px;COLOR: #ffffff;POSITION: relative;TOP: 2px}
+.menu_title2 SPAN {FONT-WEIGHT: bold;LEFT: 3px;COLOR: #FFCC00;POSITION: relative;TOP: 2px}
+.style1 {font-size: 12px;}
+a {text-decoration: none;color: #033d61;}
 </style>
 <script>
 var he=document.body.clientHeight-105
@@ -92,6 +57,7 @@ document.write("<div id=tt style=height:"+he+";overflow:hidden>")
 					cellspacing="0">
 					<tr>
 						<td>
+							<c:forEach items="${userMenus }" var="parent">
 							<table width="100%" border="0" cellspacing="0" cellpadding="0">
 								<tr>
 									<td height="23"
@@ -108,7 +74,9 @@ document.write("<div id=tt style=height:"+he+";overflow:hidden>")
 													&nbsp;
 												</td>
 												<td width="82%" class="STYLE1">
-													系统管理
+												
+													${parent.name}
+												
 												</td>
 											</tr>
 										</table>
@@ -118,13 +86,18 @@ document.write("<div id=tt style=height:"+he+";overflow:hidden>")
 									<td background="http://localhost:8080/static/resource/images/main_51.gif"
 										id="submenu1">
 										<div class="sec_menu">
+										
 											<table width="100%" border="0" cellspacing="0"
 												cellpadding="0">
 												<tr>
 													<td>
+														<c:if test="${fn:startsWith(currentUrl, parent.href) }">
+															<c:forEach items="${parent.childs }" var="child">
+															
 														<table width="90%" border="0" align="center"
 															cellpadding="0" cellspacing="0">
 															<tr>
+																<%-- <shiro:hasPermission name="users:list"> --%>
 																<td width="16%" height="25">
 																	<div align="center">
 																		<img src="http://localhost:8080/static/resource/images/left.gif"
@@ -139,60 +112,18 @@ document.write("<div id=tt style=height:"+he+";overflow:hidden>")
 																				onmouseover="this.style.borderStyle='solid';this.style.borderWidth='1';borderColor='#7bc4d3'; "
 																				onmouseout="this.style.borderStyle='none'">
 																				<span class="STYLE3">
-																				
-																				<a 
-																					href="http://localhost:8080/system/users"
-																					target="mainFrame">用户管理</a></span>
+																					<c:if test="${fn:startsWith(currentUrl, child.href)}">class="active"</c:if>
+																					<a href="${child.href }" target="mainFrame">${child.name}</a>
+																				</span>
 																			</td>
 																		</tr>
 																	</table>
 																</td>
-															</tr>
-															<tr>
-																<td height="23">
-																	<div align="center">
-																		<img src="http://localhost:8080/static/resource/images/left.gif"
-																			width="10" height="10" />
-																	</div>
-																</td>
-																<td height="23"   >
-																	<table width="95%" border="0" cellspacing="0"
-																		cellpadding="0">
-																		<tr  >
-																			<td height="20" style="cursor: hand"
-																				onmouseover="this.style.borderStyle='solid';this.style.borderWidth='1';borderColor='#7bc4d3'; "
-																				onmouseout="this.style.borderStyle='none'">
-																				<span class="STYLE3"> <a
-																					href="http://localhost:8080/system/roles"
-																					target="mainFrame">角色管理</a></span>
-																			</td>
-																		</tr>
-																	</table>
-																</td>
-															</tr>
-															<tr>
-																<td height="23">
-																	<div align="center">
-																		<img src="http://localhost:8080/static/resource/images/left.gif"
-																			width="10" height="10" />
-																	</div>
-																</td>
-																<td height="23"   >
-																	<table width="95%" border="0" cellspacing="0"
-																		cellpadding="0">
-																		<tr  >
-																			<td height="20" style="cursor: hand"
-																				onmouseover="this.style.borderStyle='solid';this.style.borderWidth='1';borderColor='#7bc4d3'; "
-																				onmouseout="this.style.borderStyle='none'">
-																				<span class="STYLE3"><a
-																					href="http://localhost:8080/system/menus"
-																					target="mainFrame">权限管理</a></span>
-																			</td>
-																		</tr>
-																	</table>
-																</td>
+																<%-- </shiro:hasPermission> --%>
 															</tr>
 														</table>
+														</c:forEach>
+														</c:if>
 													</td>
 												</tr>
 												<tr>
@@ -207,6 +138,7 @@ document.write("<div id=tt style=height:"+he+";overflow:hidden>")
 								</tr>
 
 							</table>
+							</c:forEach>
 						</td>
 					</tr>
 

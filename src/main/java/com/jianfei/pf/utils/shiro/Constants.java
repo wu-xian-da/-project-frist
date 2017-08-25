@@ -73,7 +73,7 @@ public interface Constants {
     /**
      * 初始化密码
      */
-    String INIT_PASSWORD = "abcd@123";
+    String INIT_PASSWORD = "jianfei";
     
     /**
      * 编码

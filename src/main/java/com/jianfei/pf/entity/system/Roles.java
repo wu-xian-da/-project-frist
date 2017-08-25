@@ -73,6 +73,10 @@ public class Roles extends BaseEntity{
         return parentMenus;
     }
     
+    /***
+     * 获取用户操作菜单下的按钮
+     * @param parent
+     */
     private void setChildrenMenus(Menus parent){
         List<Menus> childs = new ArrayList<Menus>();
         for(Menus m : menus){

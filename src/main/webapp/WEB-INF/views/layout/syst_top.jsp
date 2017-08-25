@@ -44,34 +44,11 @@ function exit(){
 </SCRIPT>
 <style type="text/css">
 <!--
-	body {
-		margin-left: 0px;
-		margin-top: 0px;
-		margin-right: 0px;
-		margin-bottom: 0px;
-		overflow: hidden;
-	}
-	
-	.STYLE1 {
-		font-size: 12px;
-		color: #FFFFFF;
-	}
-	
-	a {
-		text-decoration: none;
-		color: #033d61;
-		font-size: 12px;
-	}
-	
-	.STYLE2 {
-		font-size: 9px
-	}
-	
-	.STYLE3 {
-		color: #033d61;
-		font-size: 12px;
-	}
--->
+	body {margin-left: 0px;margin-top: 0px;margin-right: 0px;margin-bottom: 0px;overflow: hidden;}
+	.STYLE1 {font-size: 8px;color: #FFFFFF;}
+	a {text-decoration: none;color: #033d61;font-size: 12px;}
+	.STYLE2 {font-size: 9px}
+	.STYLE3 {color: #033d61;font-size: 12px;}-->
 </style>
 </head>
 <body onload=startclock() >
@@ -208,16 +185,16 @@ function exit(){
 					background="http://localhost:8080/static/resource/images/main_36.gif">
 					<table width="100%" border="0" cellspacing="0" cellpadding="0">
 						<tr>
-							<td width="177" height="28"
+							<td width="180" height="28"
 								background="http://localhost:8080/static/resource/images/main_32.gif">
 								<table width="100%" border="0" cellspacing="0" cellpadding="0">
 									<tr>
-										<td width="20%" height="22">
+										<td width="10%" height="22">
 											&nbsp;
 										</td>
-										<td width="59%" valign="bottom">
-											<div align="center" class="STYLE1">
-												当前用户：<%=request.getSession().getAttribute("username") %>
+										<td width="59%" valign="bottom" style="text-indent: 6px;">
+											<div align="center" class="STYLE1" >
+												用户名：<%=request.getSession().getAttribute("username") %>
 											</div>
 										</td>
 										<td width="21%">

@@ -40,6 +40,7 @@ public class RolesController {
 	
 	@RequestMapping(value="/insert",method=RequestMethod.POST)
 	public String insert(Roles roles ,Model model){
+		roles.filterResource();//提交表单去除空元素
 		Roles role = this.rolesService.findRolesByRolename(roles.getRolename());
 		if (role != null) {
 			System.out.println("角色已经存在,请更换!");
@@ -66,6 +67,7 @@ public class RolesController {
 	
 	@RequestMapping(value="/update/{id}",method=RequestMethod.POST)
 	public String update(@PathVariable("id") int id,Roles roles,Model model) {
+		roles.filterResource();//提交表单去除空元素
 		System.out.println(roles);
 		Roles role = this.rolesService.findRolesByRolename(roles.getRolename());
 		System.out.println(role);

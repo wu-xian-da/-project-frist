@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ include file="/WEB-INF/include/taglib.jsp"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -15,7 +16,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="expires" content="0">    
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
-<script type="text/javascript" src="<%=basePath%>resource/js/CheckForm.js"></script>
 <script type="text/javascript">
 	var errori ='<%=request.getParameter("error1")%>'
 	if(errori=='nickname'){
@@ -85,14 +85,14 @@ body {
               <tr>
                 <td width="16%" height="25"><div align="right"><span class="STYLE1">昵称</span></div></td>
                 <td width="57%" height="25"><div align="center">
-                  <input type="text" name="nickname"  valid="required|regexp" regexp="^[A-Za-z0-9]+$" errmsg="用户名不能为空!|账号只能由字母和数字组成!"  style="width:105px; height:17px; background-color:#292929; border:solid 1px #7dbad7; font-size:12px; color:#6cd0ff">
+                  <input type="text" name="nickname" class="user-input"  valid="required|regexp" regexp="^[A-Za-z0-9]+$" errmsg="用户名不能为空!|账号只能由字母和数字组成!"  style="width:105px; height:17px; background-color:#292929; border:solid 1px #7dbad7; font-size:12px; color:#6cd0ff">
                 </div></td>
                 <td width="27%" height="25">&nbsp;</td>
               </tr>
               <tr>
                 <td height="25"><div align="right"><span class="STYLE1">密码</span></div></td>
                 <td height="25"><div align="center">
-                  <input type="password" name="password"   valid="required"  errmsg="密码不能为空!" style="width:105px; height:17px; background-color:#292929; border:solid 1px #7dbad7; font-size:12px; color:#6cd0ff">
+                  <input type="password" name="password" class="user-password" valid="required"  errmsg="密码不能为空!" style="width:105px; height:17px; background-color:#292929; border:solid 1px #7dbad7; font-size:12px; color:#6cd0ff">
                 </div></td>
                 <td height="25"><div align="left"><input type="submit" id="in1" value=""/></div></td>
               </tr>
@@ -109,5 +109,5 @@ body {
   </tr>
 </table>
 </form>
-  </body>
+</body>
 </html>

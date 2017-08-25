@@ -90,7 +90,7 @@
 	<!-- shiro角色查询 -->
 	<select id="getRoleMenus" resultMap="Roles_Menus_Map">
 		SELECT 
-			a.id, a.name, 
+			a.id, a.role_name, 
 			b.menu_id, 
 			c.name AS menu_name,
 			c.parent_id AS menu_parent,
@@ -98,9 +98,9 @@
 			c.type AS menu_type,
 			c.href,
 			c.icon
-		FROM t_role a 
-		LEFT JOIN t_role_menu b ON b.role_id = a.id
-		LEFT JOIN t_menu c ON b.menu_id = c.id
+		FROM system_roles a 
+		LEFT JOIN system_role_menu b ON b.role_id = a.id
+		LEFT JOIN system_menus c ON b.menu_id = c.id
 		WHERE a.id = #{id}
 		ORDER BY c.parent_id, c.sort
 	</select>
