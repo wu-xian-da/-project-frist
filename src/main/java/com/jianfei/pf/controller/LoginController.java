@@ -53,19 +53,17 @@ public class LoginController {
 				user.setLoginTime(new Date());
 				user.setIp(HttpUtils.getRemoteAddr(request));
 				usersService.updateLoginTimeAndIp(user);
-				
 				request.getSession().setAttribute("username", user.getUsername());
-				
+				//获取用户角色权限
 				user.setRole(this.rolesService.getRoleMenus(user.getRole().getId()));
-				
+				//权限菜单的获取
 		        SessionUtils.setSessionAttribute(Constants.USER_MENUS, user.getRole().getUserMenus());
+		        //权限标识字符串的获取
 		        SessionUtils.setSessionAttribute(Constants.USER_PERMS, user.getRole().getUserPermissions());
 		        
 		        //request.getSession().setAttribute("menus_buttons",user.getRole().getUserPermissions());
 		        
 				System.out.println("登录成功");
-				
-				
 				
 				return "layout/main";
 			} else if (users.getNickname().equals(user.getNickname()) && !users.getPassword().equals(user.getPassword())){

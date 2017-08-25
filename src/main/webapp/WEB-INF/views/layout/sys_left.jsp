@@ -62,9 +62,9 @@ document.write("<div id=tt style=height:"+he+";overflow:hidden>")
 								<tr>
 									<td height="23"
 										background="http://localhost:8080/static/resource/images/main_47.gif"
-										id="imgmenu1" class="menu_title"
+										id="imgmenu${parent.id}" class="menu_title"
 										onMouseOver="this.className='menu_title2';"
-										onClick="showsubmenu(1)"
+										onClick="showsubmenu(${parent.id})"
 										onMouseOut="this.className='menu_title';"
 										style="cursor: hand">
 										<table width="100%" border="0" cellspacing="0"
@@ -84,14 +84,14 @@ document.write("<div id=tt style=height:"+he+";overflow:hidden>")
 								</tr>
 								<tr>
 									<td background="http://localhost:8080/static/resource/images/main_51.gif"
-										id="submenu1">
+										id="submenu${parent.id}">
 										<div class="sec_menu">
 										
 											<table width="100%" border="0" cellspacing="0"
 												cellpadding="0">
 												<tr>
 													<td>
-														<c:if test="${fn:startsWith(currentUrl, parent.href) }">
+														<c:if test="${fn:startsWith(parent.href, parent.href) }">
 															<c:forEach items="${parent.childs }" var="child">
 															
 														<table width="90%" border="0" align="center"
@@ -112,8 +112,9 @@ document.write("<div id=tt style=height:"+he+";overflow:hidden>")
 																				onmouseover="this.style.borderStyle='solid';this.style.borderWidth='1';borderColor='#7bc4d3'; "
 																				onmouseout="this.style.borderStyle='none'">
 																				<span class="STYLE3">
-																					<c:if test="${fn:startsWith(currentUrl, child.href)}">class="active"</c:if>
+																					<c:if test="${fn:startsWith(child.href, child.href)}">
 																					<a href="${child.href }" target="mainFrame">${child.name}</a>
+																					</c:if>
 																				</span>
 																			</td>
 																		</tr>
@@ -164,20 +165,16 @@ document.write("<div id=tt style=height:"+he+";overflow:hidden>")
 </body>
 <script>
 
-function showsubmenu(sid)
-{
-whichEl = eval("submenu" + sid);
-imgmenu = eval("imgmenu" + sid);
-if (whichEl.style.display == "none")
-{
-eval("submenu" + sid + ".style.display=\"\";");
-imgmenu.background="http://localhost:8080/static/resource/images/main_47.gif";
-}
-else
-{
-eval("submenu" + sid + ".style.display=\"none\";");
-imgmenu.background="http://localhost:8080/static/resource/images/main_48.gif";
-}
+function showsubmenu(sid){
+	whichEl = eval("submenu" + sid);
+	imgmenu = eval("imgmenu" + sid);
+	if (whichEl.style.display == "none"){
+		eval("submenu" + sid + ".style.display=\"\";");
+		imgmenu.background="http://localhost:8080/static/resource/images/main_47.gif";
+	}else{
+		eval("submenu" + sid + ".style.display=\"none\";");
+		imgmenu.background="http://localhost:8080/static/resource/images/main_48.gif";
+	}
 }
 
 </script>

@@ -17,11 +17,12 @@
 	</c:forEach>
 	<hr/>
 	<c:forEach items="${userMenus }" var="parent">
-		<c:if test="${fn:startsWith(currentUrl, parent.href) }">
+		${parent.href}==${parent.name}<br/>
+		<c:if test="${fn:startsWith(parent.href, parent.href) }">
 			<c:forEach items="${parent.childs }" var="child">
-				<c:if test="${fn:startsWith(currentUrl, child.href)}">class="active"</c:if>
-					<a href="${child.href }">${child.name}</a>
-				
+				<c:if test="${fn:startsWith(child.href, child.href)}">
+					<a href="${child.href }">${child.name}</a><br/>
+				</c:if>
 			</c:forEach>
 		</c:if>
 	</c:forEach>
