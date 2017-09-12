@@ -1,7 +1,7 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ taglib prefix="shiro" uri="http://shiro.apache.org/tags"%>
+<%@ taglib prefix="shiro" uri="http://java.sun.com/jsp/jstl/power"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -118,18 +118,14 @@ A:hover {
 		            <td class="STYLE4" align="left" width="60%">&nbsp;&nbsp;角色名称：<input type="text" name="rolename" style="width: 100px"/></td>
 		            
 		            <td class="STYLE4" align="right" width="15%">&nbsp;&nbsp;
-		            <c:forEach items="${userPerms}" var="up">
-		           	<c:if test="${up eq 'roles:select'}">
+		           	<shiro:hasPermission name="roles:select">
 		            <input  type="submit" value="查询" style="width:50px"/>
-		            </c:if>
-		            </c:forEach>
+		           	</shiro:hasPermission>
 		            </td>
 		            <td class="STYLE4" align="right" width="10%">&nbsp;&nbsp;
-		            <c:forEach items="${userPerms}" var="up">
-		           	<c:if test="${up eq 'roles:insert'}">
+		            <shiro:hasPermission name="roles:insert">
 		            <input  type="button" value="添加"  onclick="add()"  style="width:50px"/>
-		            </c:if>
-		            </c:forEach>
+		            </shiro:hasPermission>
 		            </td>            
 		          </tr>
 		        </table>
@@ -164,18 +160,14 @@ A:hover {
             <td height="20" bgcolor="#FFFFFF"style="width: 15%">
             <div align="center">
 	            <span class="STYLE4">
-		            <c:forEach items="${userPerms}" var="up">
-		           	<c:if test="${up eq 'roles:update'}">
+		            <shiro:hasPermission name="roles:update">
 			            <img src="<%=basePath%>static/resource/images/edt.gif" width="16" height="16" />
 			            <a href="<%=basePath%>system/roles/update/${r.id}">编辑</a>&nbsp; 
-		            </c:if>
-		            </c:forEach>
-		            <c:forEach items="${userPerms}" var="up">
-		           	<c:if test="${up eq 'roles:delete'}">
+		            </shiro:hasPermission>
+		            <shiro:hasPermission name="roles:delete">
 			            <img src="<%=basePath%>static/resource/images/del.gif" width="16" height="16" />
 			            <a href="<%=basePath%>system/roles/delete|/${r.id}" class="deleterole">删除</a>
-		           </c:if>
-		           </c:forEach>
+		           	</shiro:hasPermission>
 		            <input type="hidden" name="rolename" value="${r.rolename}"/>
 		            <input type="hidden" name="users" value="${r.userList}"/>
 	            </span>

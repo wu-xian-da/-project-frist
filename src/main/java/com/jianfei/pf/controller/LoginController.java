@@ -27,7 +27,7 @@ import com.jianfei.pf.utils.shiro.SessionUtils;
 
 @Controller
 @RequestMapping(value="/")
-public class LoginController {
+public class LoginController{
 	
 	@Autowired
 	private UsersService usersService;

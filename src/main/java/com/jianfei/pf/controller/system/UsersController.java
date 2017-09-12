@@ -7,6 +7,8 @@ package com.jianfei.pf.controller.system;
 
 import java.util.Date;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,10 +16,13 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.jianfei.pf.controller.common.PowerController;
 import com.jianfei.pf.entity.common.Gender;
 import com.jianfei.pf.entity.system.Users;
 import com.jianfei.pf.service.system.RolesService;
 import com.jianfei.pf.service.system.UsersService;
+import com.jianfei.pf.utils.shiro.Constants;
+import com.jianfei.pf.utils.shiro.SessionUtils;
 
 @Controller
 @RequestMapping(value="/system/users")
@@ -28,6 +33,9 @@ public class UsersController{
 	
 	@Autowired
 	private RolesService rolesService;
+	
+	@Autowired
+	private PowerController powerController;
 	
 	private void setModel (Model model) {
 		model.addAttribute("gender",Gender.values());
@@ -92,7 +100,7 @@ public class UsersController{
 	}
 
 	@RequestMapping
-	public String list(Model model,Users users){
+	public String list(Model model,Users users,HttpServletRequest request){
 		model.addAttribute("page",this.usersService.findPage(users));
 		this.setModel(model);
 		return "system/users/list";

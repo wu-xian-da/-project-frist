@@ -1,7 +1,7 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ taglib prefix="shiro" uri="http://shiro.apache.org/tags"%>
+<%@ taglib prefix="shiro" uri="http://java.sun.com/jsp/jstl/power"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -142,18 +142,14 @@ A:hover {
 		            <script type="text/javascript" src="<%=basePath%>static/resource/js/datetime.js"></script>
 		            </td>
 		            <td class="STYLE4" align="right">&nbsp;&nbsp;
-		           	<c:forEach items="${userPerms}" var="up">
-		           	<c:if test="${up eq 'users:select'}">
+		           	<shiro:hasPermission name="users:select">
 		            <input  type="submit" value="查询" style="width:50px"/>
-		            </c:if>
-		            </c:forEach>
+		            </shiro:hasPermission>
 		            </td>
 		            <td class="STYLE4" align="right">&nbsp;&nbsp;
-		            <c:forEach items="${userPerms}" var="up">
-		           	<c:if test="${up eq 'users:insert'}">
+		            <shiro:hasPermission name="users:insert">
 		            <input  type="button" value="添加"  onclick="add()"  style="width:50px"/>
-		            </c:if>
-		            </c:forEach>
+		            </shiro:hasPermission>
 		            </td>            
 		          </tr>
 		        </table>
@@ -249,18 +245,14 @@ A:hover {
             <td height="20" bgcolor="#FFFFFF"style="width: 15%">
             <div align="center">
 	            <span class="STYLE4">
-		            	<c:forEach items="${userPerms}" var="up">
-		           		<c:if test="${up eq 'users:update'}">
+		            	<shiro:hasPermission name="users:update">
 		           		<img src="<%=basePath%>static/resource/images/edt.gif" width="16" height="16" />
 		            	<a href="${pageContext.request.contextPath}/system/users/update/${u.id}">编辑</a>&nbsp; 
-		            	</c:if>
-		            	</c:forEach>
-		            	<c:forEach items="${userPerms}" var="up">
-		           		<c:if test="${up eq 'users:delete'}">
+		            	</shiro:hasPermission>
+		            	<shiro:hasPermission name="users:delete">
 		            	<img src="<%=basePath%>static/resource/images/del.gif" width="16" height="16" />
 		            	<a href="${pageContext.request.contextPath}/system/users/delete/${u.id}" class="deleteuser">删除</a>
-		            	</c:if>
-		            	</c:forEach>
+		            	</shiro:hasPermission>
 		            <input type="hidden" name="username" value="${u.username }" />
 	            </span>
             </div>
