@@ -22,7 +22,7 @@ public class PowerController  extends BodyTagSupport{
 	public int doEndTag() throws JspException {
 		String code = getName();
 		Object power = this.pageContext.getSession().getAttribute(Constants.USER_PERMS);
-		System.out.println(power+"----");
+		//System.out.println(power+"----");
 		if (power == null) {
 			return SKIP_BODY;
 		}
