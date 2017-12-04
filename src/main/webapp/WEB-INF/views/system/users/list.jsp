@@ -118,10 +118,10 @@ A:hover {
 		          <tr>
 		          	<td class="STYLE4" align="left" width="100px">条件检索</td>
 		            <td class="STYLE4" align="left" width="150px">姓名：
-		            <input type="text" name="username" style="width: 50px"/>
+		            <input type="text" name="username" value="${page.entity.username }" style="width: 50px"/>
 		            </td>
 		            <td class="STYLE4" align="left" width="150px">昵称：
-		            <input type="text" name="nickname" style="width: 50px"/>
+		            <input type="text" name="nickname" value="${page.entity.nickname }" style="width: 50px"/>
 		            </td>
 		            <td class="STYLE4" align="left" width="200px">性别：
 		            	<select name="gender" >
@@ -176,10 +176,10 @@ A:hover {
             <div align="center"><span class="STYLE1">序号</span></div>
             </td>
             <td width="8%" height="22" background="<%=basePath%>static/resource/images/bg2.gif" bgcolor="#FFFFFF">
-            <div align="center"><span class="STYLE1">昵称</span></div>
+            <div align="center"><span class="STYLE1">姓名</span></div>
             </td>
             <td width="8%" height="22" background="<%=basePath%>static/resource/images/bg2.gif" bgcolor="#FFFFFF">
-            <div align="center"><span class="STYLE1">姓名</span></div>
+            <div align="center"><span class="STYLE1">昵称</span></div>
             </td>
             <td width="8%" height="22" background="<%=basePath%>static/resource/images/bg2.gif" bgcolor="#FFFFFF">
             <div align="center"><span class="STYLE1">密码</span></div>
@@ -211,11 +211,11 @@ A:hover {
             <td height="20" bgcolor="#FFFFFF"style="width: 3%">
             <div align="center"><span class="STYLE1">${u.id}</span></div>
             </td>
-            <td height="20" bgcolor="#FFFFFF"style="width: 6%">
-            <div align="center"><span class="STYLE1">${u.nickname}</span></div>
-            </td>
             <td height="20" bgcolor="#FFFFFF"style="width: 3%">
             <div align="center"><span class="STYLE1">${u.username}</span></div>
+            </td>
+            <td height="20" bgcolor="#FFFFFF"style="width: 6%">
+            <div align="center"><span class="STYLE1">${u.nickname}</span></div>
             </td>
             <td height="20" bgcolor="#FFFFFF"style="width: 3%">
             <div align="center"><span class="STYLE1">${u.password}</span></div>

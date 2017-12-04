@@ -186,8 +186,9 @@ A:hover {
 	            </span>
             </div>
             </td>
-          </tr>
-          </c:forEach>
+         </tr>
+         
+         </c:forEach>
          </table></td>
         <td width="8" background="<%=basePath%>static/resource/images/tab_15.gif">&nbsp;</td>
       </tr>
