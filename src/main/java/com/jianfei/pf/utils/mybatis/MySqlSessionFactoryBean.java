@@ -51,8 +51,8 @@ import org.springframework.core.NestedIOException;
 import org.springframework.core.io.Resource;
 import org.springframework.jdbc.datasource.TransactionAwareDataSourceProxy;
 
-import com.jianfei.pf.entity.common.Page;
-import com.jianfei.pf.utils.mybatis.interceptor.PageInterceptor;
+import com.jianfei.pf.page.common.Page;
+import com.jianfei.pf.page.interceptor.PageInterceptor;
 
 
 

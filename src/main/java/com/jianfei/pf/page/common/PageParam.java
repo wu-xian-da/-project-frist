@@ -3,7 +3,7 @@
   *@author changchun.wu
   *2017年8月7日下午3:30:44
   */
-package com.jianfei.pf.entity.common;
+package com.jianfei.pf.page.common;
 
 import lombok.Getter;
 import lombok.Setter;

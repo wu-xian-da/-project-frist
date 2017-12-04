@@ -1,8 +1,8 @@
-package com.jianfei.pf.utils.mybatis.interceptor;
+package com.jianfei.pf.page.interceptor;
 
 import org.apache.ibatis.reflection.factory.DefaultObjectFactory;
 
-import com.jianfei.pf.entity.common.Page;
+import com.jianfei.pf.page.common.Page;
 
 
 /**

@@ -3,7 +3,7 @@
   *@author changchun.wu
   *2017年8月4日上午10:18:50
   */
-package com.jianfei.pf.entity.common;
+package com.jianfei.pf.page.common;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;

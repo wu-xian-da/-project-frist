@@ -1,6 +1,6 @@
-package com.jianfei.pf.base.filter.page;
+package com.jianfei.pf.page.filter;
 
-import com.jianfei.pf.entity.common.PageParam;
+import com.jianfei.pf.page.common.PageParam;
 
 /**
  * Page 上下文 传递

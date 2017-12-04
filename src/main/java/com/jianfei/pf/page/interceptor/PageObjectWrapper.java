@@ -1,4 +1,4 @@
-package com.jianfei.pf.utils.mybatis.interceptor;
+package com.jianfei.pf.page.interceptor;
 
 import java.util.List;
 
@@ -7,9 +7,9 @@ import org.apache.ibatis.reflection.factory.ObjectFactory;
 import org.apache.ibatis.reflection.property.PropertyTokenizer;
 import org.apache.ibatis.reflection.wrapper.ObjectWrapper;
 
-import com.jianfei.pf.base.filter.page.PageContext;
-import com.jianfei.pf.entity.common.Page;
-import com.jianfei.pf.entity.common.PageParam;
+import com.jianfei.pf.page.common.Page;
+import com.jianfei.pf.page.common.PageParam;
+import com.jianfei.pf.page.filter.PageContext;
 
 /**
  * 对象封装把Mybatis List数据 封装为 Page对象

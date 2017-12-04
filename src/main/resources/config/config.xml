@@ -18,11 +18,11 @@
         
 	</settings>
 	
-	<objectFactory type="com.jianfei.pf.utils.mybatis.interceptor.PageObjectFactory" />
-	<objectWrapperFactory type="com.jianfei.pf.utils.mybatis.interceptor.PageObjectWrapperFactory" />
+	<objectFactory type="com.jianfei.pf.page.interceptor.PageObjectFactory" />
+	<objectWrapperFactory type="com.jianfei.pf.page.interceptor.PageObjectWrapperFactory" />
 	
 	<plugins>
-	    <plugin interceptor="com.jianfei.pf.utils.mybatis.interceptor.PageInterceptor"></plugin>
+	    <plugin interceptor="com.jianfei.pf.page.interceptor.PageInterceptor"></plugin>
 	</plugins>
 	
 </configuration>

@@ -1,4 +1,4 @@
-package com.jianfei.pf.utils.mybatis.interceptor;
+package com.jianfei.pf.page.interceptor;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -19,8 +19,8 @@ import org.apache.ibatis.plugin.Signature;
 import org.apache.ibatis.reflection.MetaObject;
 import org.apache.ibatis.reflection.SystemMetaObject;
 
-import com.jianfei.pf.base.filter.page.PageContext;
-import com.jianfei.pf.entity.common.PageParam;
+import com.jianfei.pf.page.common.PageParam;
+import com.jianfei.pf.page.filter.PageContext;
 
 
 /**

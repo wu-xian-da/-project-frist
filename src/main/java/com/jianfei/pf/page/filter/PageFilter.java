@@ -1,4 +1,4 @@
-package com.jianfei.pf.base.filter.page;
+package com.jianfei.pf.page.filter;
 
 import java.io.IOException;
 
@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.web.filter.OncePerRequestFilter;
 
-import com.jianfei.pf.entity.common.PageParam;
+import com.jianfei.pf.page.common.PageParam;
 
 
 /**
